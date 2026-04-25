@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/Stanislav/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Станислав | Разработка сайтов и AI-решений</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+      /* Critical inline styles to prevent FOUC (flash of unstyled content) */
+      body {
+        background-color: #050505;
+        margin: 0;
+        overflow: hidden;
+      }
+      .preloader {
+        position: fixed;
+        top: 0; left: 0; width: 100vw; height: 100vh;
+        background-color: #050505;
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .preloader-text {
+        font-family: 'Syne', sans-serif;
+        font-size: clamp(4rem, 10vw, 8rem);
+        font-weight: 800;
+        color: #fff;
+      }
+    </style>
+    <script type="module" crossorigin src="/Stanislav/assets/index-BHcHYMSC.js"></script>
+    <link rel="stylesheet" crossorigin href="/Stanislav/assets/index-C490cjhC.css">
+  </head>
+  <body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+      <div class="preloader-text" id="preloader-text">0%</div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline">
+      <span class="cursor-text" id="cursor-text"></span>
+    </div>
+
+    <!-- 3D Background Canvas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="site-wrapper">
+      <header class="header">
+        <a href="#" class="logo">Станислав.</a>
+        <nav class="nav">
+          <a href="#services">Услуги</a>
+          <a href="#portfolio">Портфолио</a>
+          <a href="#about">Обо мне</a>
+        </nav>
+        <a href="#contact" class="btn-primary-outline">Связаться</a>
+      </header>
+
+      <main>
+        <!-- Hero Section -->
+        <section class="hero">
+          <div class="hero-content">
+            <h1 class="hero-title">
+              <span class="line">Цифровая</span>
+              <span class="line">Эстетика &</span>
+              <span class="line accent">Технологии.</span>
+            </h1>
+            <p class="hero-subtitle">Привет, я Станислав. Создаю премиальные сайты, приложения и AI-решения, которые продают и впечатляют.</p>
+            <div class="hero-actions">
+              <a href="#services" class="btn-primary">Смотреть услуги</a>
+              <a href="#portfolio" class="btn-link">Мои работы <span class="arrow">→</span></a>
+            </div>
+          </div>
+          <div class="hero-scroll-indicator">
+            <div class="mouse">
+              <div class="wheel"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+          <div class="about-container">
+            <h2 class="about-title">ОБО МНЕ</h2>
+            <div class="about-content">
+              <p class="about-text">
+                Меня зовут Станислав. Я занимаюсь комплексной разработкой лендингов, мобильных приложений и внедрением AI-решений для бизнеса.
+              </p>
+              <p class="about-text">
+                Для меня дизайн и код — это не просто красивая обертка. Хороший сайт — это мощный рабочий инструмент, который конвертирует трафик в клиентов, автоматизирует рутину и стабильно приносит прибыль 24/7.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Marquee Section -->
+        <div class="marquee-section">
+          <div class="marquee" id="marquee-1">
+            <div class="marquee-inner">
+              <span>WEB DEVELOPMENT &mdash; AI INTEGRATION &mdash; 3D ANIMATION &mdash; UX/UI DESIGN &mdash;&nbsp;</span>
+              <span>WEB DEVELOPMENT &mdash; AI INTEGRATION &mdash; 3D ANIMATION &mdash; UX/UI DESIGN &mdash;&nbsp;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cases Section (Portfolio) -->
+        <section id="portfolio" class="cases">
+          <div class="cases-header">
+            <h2 class="cases-title">КЕЙСЫ</h2>
+            <p class="cases-desc">Избранные проекты: от премиальных лендингов<br>до сложных многостраничных приложений.</p>
+          </div>
+          <div class="cases-grid">
+            <!-- БЛОК 1: МНОГОСТРАНИЧНИКИ -->
+            <div class="case-category-block">
+              <div class="case-flip-container">
+                <div class="case-flipper">
+                  <!-- Front -->
+                  <a href="https://spcomputers.ru" target="_blank" class="case-card front" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="case-category">МНОГОСТРАНИЧНИК (1/2)</div>
+                    <div class="case-image-wrap pattern-grid">
+                      <div class="case-typographic">[ SP ]</div>
+                    </div>
+                    <div class="case-footer">
+                      <div class="case-footer-top">
+                        <h4>SP COMPUTERS</h4>
+                        <div class="case-arrow">↗</div>
+                      </div>
+                      <p>Готовые игровые ПК и сборки<br>на заказ (Интернет-магазин)</p>
+                    </div>
+                  </a>
+                  <!-- Back -->
+                  <a href="https://n7-4iyu.onrender.com" target="_blank" class="case-card back" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="case-category">МНОГОСТРАНИЧНИК (2/2)</div>
+                    <div class="case-image-wrap pattern-grid">
+                      <div class="case-typographic">[ N7 ]</div>
+                    </div>
+                    <div class="case-footer">
+                      <div class="case-footer-top">
+                        <h4>N7 PC CLUB</h4>
+                        <div class="case-arrow">↗</div>
+                      </div>
+                      <p>Сайт для кибер-клуба с системой<br>бронирования через Telegram</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="case-controls">
+                <button class="flip-btn">Следующий проект ⟳</button>
+              </div>
+            </div>
+
+            <!-- БЛОК 2: ЛЕНДИНГИ -->
+            <div class="case-category-block">
+              <div class="case-flip-container">
+                <div class="case-flipper">
+                  <a href="#" class="case-card front" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="case-category">ЛЕНДИНГ (1/2)</div>
+                    <div class="case-image-wrap pattern-grid">
+                      <div class="case-typographic">[ VD ]</div>
+                    </div>
+                    <div class="case-footer">
+                      <div class="case-footer-top">
+                        <h4>VIBE DIGITAL AGENCY</h4>
+                        <div class="case-arrow">↗</div>
+                      </div>
+                      <p>Лендинг о творчестве агентства,<br>повлиявшего на индустрию</p>
+                    </div>
+                  </a>
+                  <a href="#" class="case-card back" style="text-decoration: none; color: inherit; display: block; opacity: 0.6;">
+                    <div class="case-category">ЛЕНДИНГ (2/2)</div>
+                    <div class="case-image-wrap pattern-dots">
+                      <div class="case-typographic" style="font-size: 3rem;">СКОРО</div>
+                    </div>
+                    <div class="case-footer">
+                      <div class="case-footer-top">
+                        <h4>СКОРО: НОВЫЙ ПРОЕКТ</h4>
+                        <div class="case-arrow">+</div>
+                      </div>
+                      <p>Здесь будет ваш<br>следующий лендинг</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="case-controls">
+                <button class="flip-btn">Следующий проект ⟳</button>
+              </div>
+            </div>
+
+            <!-- БЛОК 3: ПРИЛОЖЕНИЯ -->
+            <div class="case-category-block">
+              <div class="case-flip-container">
+                <div class="case-flipper">
+                  <a href="#" class="case-card front" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="case-category">ПРИЛОЖЕНИЕ (1/2)</div>
+                    <div class="case-image-wrap pattern-grid">
+                      <div class="case-typographic">[ AI ]</div>
+                    </div>
+                    <div class="case-footer">
+                      <div class="case-footer-top">
+                        <h4>AI CRYPTO DASHBOARD</h4>
+                        <div class="case-arrow">↗</div>
+                      </div>
+                      <p>Дизайн и разработка интерфейса<br>для аналитики портфеля</p>
+                    </div>
+                  </a>
+                  <a href="#" class="case-card back" style="text-decoration: none; color: inherit; display: block; opacity: 0.6;">
+                    <div class="case-category">ПРИЛОЖЕНИЕ (2/2)</div>
+                    <div class="case-image-wrap pattern-dots">
+                      <div class="case-typographic" style="font-size: 3rem;">СКОРО</div>
+                    </div>
+                    <div class="case-footer">
+                      <div class="case-footer-top">
+                        <h4>СКОРО: НОВЫЙ ПРОЕКТ</h4>
+                        <div class="case-arrow">+</div>
+                      </div>
+                      <p>Здесь будет ваше<br>следующее приложение</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="case-controls">
+                <button class="flip-btn">Следующий проект ⟳</button>
+              </div>
+            </div>
+
+            <!-- БЛОК 4: БОТЫ -->
+            <div class="case-category-block">
+              <div class="case-flip-container">
+                <div class="case-flipper">
+                  <a href="#" class="case-card front" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="case-category">TELEGRAM БОТ (1/2)</div>
+                    <div class="case-image-wrap pattern-grid">
+                      <div class="case-typographic">[ TG ]</div>
+                    </div>
+                    <div class="case-footer">
+                      <div class="case-footer-top">
+                        <h4>SMART ASSISTANT</h4>
+                        <div class="case-arrow">↗</div>
+                      </div>
+                      <p>Умный Telegram-бот на базе ИИ<br>для автоматизации бизнеса</p>
+                    </div>
+                  </a>
+                  <a href="#" class="case-card back" style="text-decoration: none; color: inherit; display: block; opacity: 0.6;">
+                    <div class="case-category">TELEGRAM БОТ (2/2)</div>
+                    <div class="case-image-wrap pattern-dots">
+                      <div class="case-typographic" style="font-size: 3rem;">СКОРО</div>
+                    </div>
+                    <div class="case-footer">
+                      <div class="case-footer-top">
+                        <h4>СКОРО: НОВЫЙ ПРОЕКТ</h4>
+                        <div class="case-arrow">+</div>
+                      </div>
+                      <p>Здесь будет ваш<br>следующий бот</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="case-controls">
+                <button class="flip-btn">Следующий проект ⟳</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="process">
+          <div class="process-header">
+            <h2 class="process-title">ЭТАПЫ И ПРОЦЕСС РАБОТЫ</h2>
+          </div>
+          <div class="process-grid">
+            <div class="process-card">
+              <span class="process-num">[01]</span>
+              <h3>БРИФИНГ</h3>
+              <p>Заполнение формы<br>с вопросами или созвон</p>
+            </div>
+            <div class="process-card">
+              <span class="process-num">[02]</span>
+              <h3>МУДБОРД</h3>
+              <p>Подбор референсов, цветов и шрифтов,<br>отражающих проект</p>
+            </div>
+            <div class="process-card">
+              <span class="process-num">[03]</span>
+              <h3>ПРОТОТИП</h3>
+              <p>Разработка структуры сайта без<br>наполнения</p>
+            </div>
+            <div class="process-card">
+              <span class="process-num">[04]</span>
+              <h3>КОНЦЕПТ</h3>
+              <p>Дизайн первого блока, чтобы посмотреть<br>стилистику, в которой далее будет выполнен<br>весь сайт</p>
+            </div>
+            <div class="process-card">
+              <span class="process-num">[05]</span>
+              <h3>ДИЗАЙН</h3>
+              <p>Дизайн остальных блоков и<br>страниц</p>
+            </div>
+            <div class="process-card">
+              <span class="process-num">[06]</span>
+              <h3>ВЕРСТКА</h3>
+              <p>Перенос сайта на код, добавление<br>уместной анимации, адаптив под мобильные<br>устройства</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Services List Section -->
+        <section id="services" class="services-list-section">
+          <div class="services-layout">
+            <div class="services-visual">
+              <div class="abstract-shape"></div>
+            </div>
+            <div class="services-content">
+              <div class="services-header-top">
+                <h2 class="services-title-large">УСЛУГИ</h2>
+              </div>
+              <ul class="services-list">
+                <li class="service-row">
+                  <span class="service-no">NO1</span>
+                  <span class="service-name">ЛЕНДИНГ</span>
+                  <span class="service-price">от 5.000</span>
+                </li>
+                <li class="service-row">
+                  <span class="service-no">NO2</span>
+                  <span class="service-name">МНОГОСТРАНИЧНИК</span>
+                  <span class="service-price">от 15.000</span>
+                </li>
+                <li class="service-row">
+                  <span class="service-no">NO3</span>
+                  <span class="service-name">ИНТЕРНЕТ - МАГАЗИН</span>
+                  <span class="service-price">от 25.000</span>
+                </li>
+                <li class="service-row">
+                  <span class="service-no">NO4</span>
+                  <span class="service-name">ПРИЛОЖЕНИЯ (PWA)</span>
+                  <span class="service-price">от 20.000</span>
+                </li>
+                <li class="service-row">
+                  <span class="service-no">NO5</span>
+                  <span class="service-name">TELEGRAM - БОТЫ (AI)</span>
+                  <span class="service-price">от 10.000</span>
+                </li>
+                <li class="service-row">
+                  <span class="service-no">NO6</span>
+                  <span class="service-name">3D & АНИМАЦИИ</span>
+                  <span class="service-price">индивидуально</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+          <div class="contact-box">
+            <h2 class="contact-title">ГОТОВЫ ОБСУДИТЬ ПРОЕКТ?</h2>
+            <p class="contact-desc">Напишите мне, и мы детально разберем вашу задачу.</p>
+            <div class="contact-links">
+              <a href="https://t.me/yourtelegram" class="contact-link" target="_blank">Telegram ↗</a>
+              <a href="https://vk.com/yourvk" class="contact-link" target="_blank">ВКонтакте ↗</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-top">
+          <p>&copy; 2026 Станислав. Все права защищены.</p>
+        </div>
+        <div class="footer-legal">
+          <p class="legal-text">
+            ИНН: 631229932089 | НПД (Самозанятый)<br>
+            <a href="/privacy.html" class="legal-link" target="_blank">Политика конфиденциальности</a> | 
+            <a href="/terms.html" class="legal-link" target="_blank">Пользовательское соглашение</a> | 
+            <a href="/consent.html" class="legal-link" target="_blank">Согласие на обработку персональных данных</a>
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <button class="scroll-to-top" id="scrollToTopBtn">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 19V5M5 12l7-7 7 7"/>
+      </svg>
+    </button>
+
+  </body>
+</html>
