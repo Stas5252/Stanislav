@@ -110,6 +110,17 @@ a {
   color: inherit;
 }
 
+/* 3D Background Canvas */
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
 .site-wrapper {
   position: relative;
   z-index: 1;
