@@ -66,25 +66,40 @@ hoverElements.forEach(el => {
 const caseCards = document.querySelectorAll('.case-card');
 const cursorText = document.getElementById('cursor-text');
 
-caseCards.forEach(card => {
-  card.addEventListener('mouseenter', () => {
-    cursorOutline.style.width = '90px';
-    cursorOutline.style.height = '90px';
-    cursorOutline.style.backgroundColor = '#fff';
-    cursorOutline.style.borderColor = 'transparent';
-    cursorOutline.style.mixBlendMode = 'difference';
-    cursorText.innerText = 'СМОТРЕТЬ';
-    cursorText.style.opacity = '1';
+// Check if device is touch-enabled
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+if (!isTouchDevice) {
+  window.addEventListener('mousemove', (e) => {
+    const posX = e.clientX;
+    const posY = e.clientY;
+
+    cursorDot.style.left = `${posX}px`;
+    cursorDot.style.top = `${posY}px`;
+
+    gsap.to(cursorOutline, {
+      x: posX,
+      y: posY,
+      duration: 0.15,
+      ease: "power2.out"
+    });
   });
-  card.addEventListener('mouseleave', () => {
-    cursorOutline.style.width = '40px';
-    cursorOutline.style.height = '40px';
-    cursorOutline.style.backgroundColor = 'transparent';
-    cursorOutline.style.borderColor = 'rgba(255, 255, 255, 0.5)';
-    cursorOutline.style.mixBlendMode = 'normal';
-    cursorText.style.opacity = '0';
+
+  caseCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      cursorOutline.style.width = '90px';
+      cursorOutline.style.height = '90px';
+      cursorOutline.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+      cursorOutline.style.borderColor = 'var(--accent)';
+    });
+    card.addEventListener('mouseleave', () => {
+      cursorOutline.style.width = '40px';
+      cursorOutline.style.height = '40px';
+      cursorOutline.style.backgroundColor = 'transparent';
+      cursorOutline.style.borderColor = 'rgba(255, 255, 255, 0.5)';
+    });
   });
-});
+}
 
 // ==========================================
 // 2. Preloader & GSAP Animations
@@ -132,7 +147,7 @@ gsap.to(progress, {
       ease: 'power4.inOut',
       onComplete: () => {
         heroTimeline.play();
-        lenis.start(); // Enable scrolling after preloader
+        lenis.start();
       }
     });
   }
@@ -141,7 +156,6 @@ gsap.to(progress, {
 // About Text Reveal
 const aboutTexts = document.querySelectorAll('.about-text');
 aboutTexts.forEach(text => {
-  // Simple word splitter
   const words = text.innerText.split(' ');
   text.innerHTML = '';
   words.forEach(word => {
@@ -149,8 +163,6 @@ aboutTexts.forEach(text => {
     wordSpan.className = 'word';
     wordSpan.innerHTML = `<span class="word-inner">${word}</span>`;
     text.appendChild(wordSpan);
-    
-    // Add space back
     text.appendChild(document.createTextNode(' '));
   });
 
@@ -168,21 +180,16 @@ aboutTexts.forEach(text => {
 });
 
 // Marquee Animation
-const marquee = document.getElementById('marquee-1');
-let currentScroll = 0;
-let isScrollingDown = true;
-
 const marqueeTween = gsap.to('.marquee-inner', {
   xPercent: -50,
   ease: 'none',
-  duration: 10,
+  duration: 15,
   repeat: -1,
   modifiers: {
     xPercent: gsap.utils.wrap(-50, 0)
   }
 });
 
-// Change marquee direction based on scroll
 ScrollTrigger.create({
   onUpdate: (self) => {
     if (self.direction === 1) {
@@ -194,10 +201,10 @@ ScrollTrigger.create({
 });
 
 // Cases scroll animation
-gsap.utils.toArray('.case-category-block').forEach(block => {
-  gsap.from(block, {
+gsap.utils.toArray('.case-card-wrapper').forEach(card => {
+  gsap.from(card, {
     scrollTrigger: {
-      trigger: block,
+      trigger: card,
       start: 'top 85%',
     },
     y: 50,
@@ -207,11 +214,29 @@ gsap.utils.toArray('.case-category-block').forEach(block => {
   });
 });
 
-// Flip Card Mechanics
-document.querySelectorAll('.flip-btn').forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    const flipper = e.target.closest('.case-category-block').querySelector('.case-flipper');
-    flipper.classList.toggle('is-flipped');
+// Contrast section scroll animation
+gsap.from('.contrast-section .section-title', {
+  scrollTrigger: {
+    trigger: '.contrast-section',
+    start: 'top 85%',
+  },
+  y: 30,
+  opacity: 0,
+  duration: 1,
+  ease: 'power3.out'
+});
+
+gsap.utils.toArray('.contrast-card').forEach((card, i) => {
+  gsap.from(card, {
+    scrollTrigger: {
+      trigger: card,
+      start: 'top 85%',
+    },
+    x: i === 0 ? -50 : 50,
+    opacity: 0,
+    duration: 1,
+    delay: 0.2,
+    ease: 'power3.out'
   });
 });
 
@@ -260,12 +285,9 @@ gsap.from('.contact-box', {
 // ==========================================
 const canvas = document.getElementById('bg-canvas');
 const scene = new THREE.Scene();
-
-// Camera
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.z = 30;
 
-// Renderer
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
   alpha: true,
@@ -274,20 +296,18 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-// Object: Brutalist Torus Knot
 const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
 const material = new THREE.MeshBasicMaterial({ 
-  color: 0x333333, // Dark grey for subtle brutalist look
+  color: 0x333333,
   wireframe: true,
   transparent: true,
-  opacity: 0.3
+  opacity: 0.2
 });
 const torusKnot = new THREE.Mesh(geometry, material);
 scene.add(torusKnot);
 
-// Particles for digital vibe
 const particlesGeometry = new THREE.BufferGeometry();
-const particlesCount = 500;
+const particlesCount = 300;
 const posArray = new Float32Array(particlesCount * 3);
 
 for(let i = 0; i < particlesCount * 3; i++) {
@@ -296,14 +316,13 @@ for(let i = 0; i < particlesCount * 3; i++) {
 particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
 const particlesMaterial = new THREE.PointsMaterial({
   size: 0.05,
-  color: 0xb0ff1a, // Accent color
+  color: 0xb0ff1a,
   transparent: true,
-  opacity: 0.5
+  opacity: 0.4
 });
 const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
 scene.add(particlesMesh);
 
-// Mouse interaction for 3D
 let mouseX = 0;
 let mouseY = 0;
 let targetX = 0;
@@ -311,37 +330,35 @@ let targetY = 0;
 const windowHalfX = window.innerWidth / 2;
 const windowHalfY = window.innerHeight / 2;
 
-document.addEventListener('mousemove', (event) => {
-  mouseX = (event.clientX - windowHalfX);
-  mouseY = (event.clientY - windowHalfY);
-});
+if (!isTouchDevice) {
+  document.addEventListener('mousemove', (event) => {
+    mouseX = (event.clientX - windowHalfX);
+    mouseY = (event.clientY - windowHalfY);
+  });
+}
 
-// Animation Loop
 const clock = new THREE.Clock();
 
 function animate() {
   requestAnimationFrame(animate);
   const elapsedTime = clock.getElapsedTime();
 
-  // Rotate Torus
   torusKnot.rotation.y += 0.002;
   torusKnot.rotation.x += 0.001;
+  particlesMesh.rotation.y = elapsedTime * 0.01;
 
-  // Rotate Particles slowly
-  particlesMesh.rotation.y = elapsedTime * 0.02;
-
-  // Mouse interaction easing
-  targetX = mouseX * 0.001;
-  targetY = mouseY * 0.001;
-  torusKnot.rotation.y += 0.05 * (targetX - torusKnot.rotation.y);
-  torusKnot.rotation.x += 0.05 * (targetY - torusKnot.rotation.x);
+  if (!isTouchDevice) {
+    targetX = mouseX * 0.001;
+    targetY = mouseY * 0.001;
+    torusKnot.rotation.y += 0.05 * (targetX - torusKnot.rotation.y);
+    torusKnot.rotation.x += 0.05 * (targetY - torusKnot.rotation.x);
+  }
 
   renderer.render(scene, camera);
 }
 
 animate();
 
-// Resize handler
 window.addEventListener('resize', () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
@@ -354,7 +371,6 @@ window.addEventListener('resize', () => {
 const scrollTopBtn = document.getElementById('scrollToTopBtn');
 
 if (scrollTopBtn) {
-  // Show/hide based on scroll position
   window.addEventListener('scroll', () => {
     if (window.scrollY > 500) {
       scrollTopBtn.classList.add('visible');
@@ -363,7 +379,6 @@ if (scrollTopBtn) {
     }
   });
 
-  // Smooth scroll to top using Lenis
   scrollTopBtn.addEventListener('click', () => {
     lenis.scrollTo(0, { duration: 1.5 });
   });
