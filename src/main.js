@@ -133,17 +133,18 @@ const preloaderText = document.getElementById('preloader-text');
 const preloader = document.getElementById('preloader');
 let progress = { value: 0 };
 
+// Faster progress animation
 gsap.to(progress, {
   value: 100,
-  duration: 2,
-  ease: 'power2.inOut',
+  duration: 1.2, // Reduced from 2s
+  ease: 'power1.inOut',
   onUpdate: () => {
     if (preloaderText) preloaderText.innerText = Math.floor(progress.value) + '%';
   },
   onComplete: () => {
     gsap.to(preloader, {
       yPercent: -100,
-      duration: 1,
+      duration: 0.8, // Reduced from 1s
       ease: 'power4.inOut',
       onComplete: () => {
         heroTimeline.play();
