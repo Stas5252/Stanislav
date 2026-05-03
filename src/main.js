@@ -385,26 +385,3 @@ if (scrollTopBtn) {
   });
 }
 
-// ==========================================
-// 5. Cookie Banner Logic
-// ==========================================
-const cookieBanner = document.getElementById('cookie-banner');
-const acceptCookiesBtn = document.getElementById('accept-cookies');
-
-if (cookieBanner && acceptCookiesBtn) {
-  const cookiesAccepted = localStorage.getItem('cookiesAccepted');
-  
-  if (!cookiesAccepted) {
-    setTimeout(() => {
-      cookieBanner.style.display = 'block';
-    }, 2000);
-  }
-
-  acceptCookiesBtn.addEventListener('click', () => {
-    localStorage.setItem('cookiesAccepted', 'true');
-    cookieBanner.style.opacity = '0';
-    setTimeout(() => {
-      cookieBanner.style.display = 'none';
-    }, 500);
-  });
-}
