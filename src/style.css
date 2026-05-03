@@ -627,6 +627,8 @@ section:not(.hero) {
   text-transform: uppercase;
   margin-top: auto;
   margin-bottom: 0.5rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .process-card p {
@@ -1043,7 +1045,11 @@ section:not(.hero) {
   }
   
   .cases-title, .process-title {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .process-card h3 {
+    font-size: 1.4rem;
   }
 
   .cases-desc {
@@ -1125,5 +1131,11 @@ section:not(.hero) {
 
   .contrast-card {
     padding: 2rem 1.5rem;
+  }
+
+  /* Global fix for horizontal overflow */
+  .site-wrapper, main, section {
+    overflow-x: hidden;
+    width: 100%;
   }
 }
