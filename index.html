@@ -1942,16 +1942,20 @@ footer {
 </a>
 
 <script>
-/* ---------- ПЛАВНЫЙ СКРОЛЛ LENIS ---------- */
+/* ---------- ОПРЕДЕЛЕНИЕ ТАЧ-УСТРОЙСТВА ---------- */
+var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (window.innerWidth <= 1024);
+
+/* ---------- ПЛАВНЫЙ СКРОЛЛ LENIS (Только для Desktop Mouse Wheel) ---------- */
 var lenis = null;
-if (typeof Lenis !== 'undefined') {
+if (!isTouchDevice && typeof Lenis !== 'undefined') {
   lenis = new Lenis({
-    duration: 1.2,
+    duration: 1.1,
     easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
-    smoothWheel: true
+    smoothWheel: true,
+    syncTouch: false
   });
   function raf(time) {
-    lenis.raf(time);
+    if (lenis) lenis.raf(time);
     requestAnimationFrame(raf);
   }
   requestAnimationFrame(raf);
@@ -1981,7 +1985,7 @@ var splitObserver = new IntersectionObserver(function(entries) {
       e.target.classList.add('in');
     }
   });
-}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.split-title').forEach(function(el) {
   splitObserver.observe(el);
@@ -1991,7 +1995,7 @@ document.querySelectorAll('.split-title').forEach(function(el) {
 setTimeout(function() {
   var heroTitle = document.querySelector('.hero-section .split-title');
   if (heroTitle) heroTitle.classList.add('in');
-}, 100);
+}, 80);
 
 /* ---------- ИНИЦИАЛИЗАЦИЯ И ИНТЕРАКТИВНОЕ РИСОВАНИЕ SVG ---------- */
 document.querySelectorAll('.svg-logo-item svg').forEach(function(svg) {
@@ -2016,13 +2020,13 @@ var logoObserver = new IntersectionObserver(function(entries) {
           setTimeout(function() {
             item.classList.add('drawn');
             if (whiteP) whiteP.style.strokeDashoffset = '0';
-          }, 250);
-        }, idx * 160);
+          }, 200);
+        }, idx * 140);
       });
       logoObserver.unobserve(e.target);
     }
   });
-}, { threshold: 0.15 });
+}, { threshold: 0.12 });
 
 var logosSec = document.querySelector('.section-logos');
 if (logosSec) logoObserver.observe(logosSec);
@@ -2040,88 +2044,122 @@ var observer = new IntersectionObserver(function(entries) {
       e.target.classList.add('in');
     }
   });
-}, { threshold: 0.15 });
+}, { threshold: 0.12 });
 
 document.querySelectorAll('.single-comment-box, .figma-frame, .wireframe-floater, .code-badge, .showcase-card').forEach(function(el) {
   observer.observe(el);
 });
 
-/* ---------- ПАРАЛЛАКС ПЛАВАЮЩИХ ЭЛЕМЕНТОВ ПРИ СКРОЛЛЕ ---------- */
-var floaters = document.querySelectorAll('.p-float');
-window.addEventListener('scroll', function() {
-  floaters.forEach(function(el) {
-    var speed = parseFloat(el.dataset.speed || 0.1);
-    var rect = el.parentElement.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-      var offset = (window.innerHeight / 2 - rect.top) * speed;
-      el.style.transform = 'translateY(' + offset + 'px)';
+/* ---------- ПАРАЛЛАКС ПЛАВАЮЩИХ ЭЛЕМЕНТОВ (Только на Desktop) ---------- */
+if (!isTouchDevice) {
+  var floaters = document.querySelectorAll('.p-float');
+  var pTicking = false;
+  window.addEventListener('scroll', function() {
+    if (!pTicking) {
+      requestAnimationFrame(function() {
+        var wh = window.innerHeight;
+        floaters.forEach(function(el) {
+          var speed = parseFloat(el.dataset.speed || 0.1);
+          var parent = el.parentElement;
+          if (!parent) return;
+          var rect = parent.getBoundingClientRect();
+          if (rect.top < wh && rect.bottom > 0) {
+            var offset = (wh / 2 - rect.top) * speed;
+            el.style.transform = 'translateY(' + offset + 'px)';
+          }
+        });
+        pTicking = false;
+      });
+      pTicking = true;
     }
-  });
-}, { passive: true });
+  }, { passive: true });
+}
 
 /* ---------- ТУЛБАР ---------- */
 var toolWrap = document.getElementById('toolWrap');
-var toolBtns = toolWrap.querySelectorAll('.tool-tab-btn');
-var activeTool = 1;
+if (toolWrap) {
+  var toolBtns = toolWrap.querySelectorAll('.tool-tab-btn');
+  var activeTool = 1;
 
-toolBtns.forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    activeTool = parseInt(this.dataset.t, 10);
-    renderTool();
+  toolBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      activeTool = parseInt(this.dataset.t, 10);
+      renderTool();
+    });
   });
-});
 
-function renderTool() {
-  toolBtns.forEach(function(b, i) { b.classList.toggle('active', i === activeTool); });
-  toolWrap.className = 'toolbar-pill-wrap t-' + activeTool;
+  function renderTool() {
+    toolBtns.forEach(function(b, i) { b.classList.toggle('active', i === activeTool); });
+    toolWrap.className = 'toolbar-pill-wrap t-' + activeTool;
+  }
+
+  setInterval(function() {
+    activeTool = (activeTool + 1) % 3;
+    renderTool();
+  }, 3200);
 }
 
-setInterval(function() {
-  activeTool = (activeTool + 1) % 3;
-  renderTool();
-}, 3200);
-
-/* ---------- СВЕТЛАЯ СЕКЦИЯ И КНОПКА СКРОЛЛА ---------- */
+/* ---------- СВЕТЛАЯ СЕКЦИЯ (IntersectionObserver вместо layout thrashing) ---------- */
 var lightStage = document.querySelector('.light-stage');
+if (lightStage) {
+  var lightObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      document.body.classList.toggle('on-light', entry.isIntersecting);
+    });
+  }, { threshold: 0.08, rootMargin: '-60px 0px -60px 0px' });
+  lightObserver.observe(lightStage);
+}
+
+/* ---------- КНОПКА СКРОЛЛА НАВЕРХ ---------- */
 var scrollTopBtn = document.getElementById('scrollTopBtn');
+if (scrollTopBtn) {
+  var sTicking = false;
+  window.addEventListener('scroll', function() {
+    if (!sTicking) {
+      requestAnimationFrame(function() {
+        scrollTopBtn.classList.toggle('show', window.scrollY > 350);
+        sTicking = false;
+      });
+      sTicking = true;
+    }
+  }, { passive: true });
 
-window.addEventListener('scroll', function() {
-  var y = window.scrollY;
-  var isLight = lightStage && y >= (lightStage.offsetTop - 80) && y < (lightStage.offsetTop + lightStage.offsetHeight - 80);
-  document.body.classList.toggle('on-light', isLight);
-  scrollTopBtn.classList.toggle('show', y > 400);
-}, { passive: true });
-
-scrollTopBtn.addEventListener('click', function() {
-  if (lenis) lenis.scrollTo(0);
-  else window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+  scrollTopBtn.addEventListener('click', function() {
+    if (lenis) {
+      lenis.scrollTo(0, { duration: 1.2 });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+}
 
 /* ---------- МЕНЮ И ПЛАВНЫЙ СКРОЛЛ ПО ЯКОРЯМ ---------- */
 var burgerBtn = document.getElementById('burgerBtn');
 var menuOverlay = document.getElementById('menuOverlay');
-burgerBtn.addEventListener('click', function() {
-  var open = menuOverlay.classList.toggle('open');
-  burgerBtn.classList.toggle('open', open);
-});
-
-document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-  anchor.addEventListener('click', function(e) {
-    var href = this.getAttribute('href');
-    if (!href || href === '#') return;
-    var target = document.querySelector(href);
-    if (target) {
-      e.preventDefault();
-      menuOverlay.classList.remove('open');
-      burgerBtn.classList.remove('open');
-      if (lenis) {
-        lenis.scrollTo(target, { offset: 0, duration: 1.2 });
-      } else {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
+if (burgerBtn && menuOverlay) {
+  burgerBtn.addEventListener('click', function() {
+    var open = menuOverlay.classList.toggle('open');
+    burgerBtn.classList.toggle('open', open);
   });
-});
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+      var href = this.getAttribute('href');
+      if (!href || href === '#') return;
+      var target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        menuOverlay.classList.remove('open');
+        burgerBtn.classList.remove('open');
+        if (lenis) {
+          lenis.scrollTo(target, { offset: 0, duration: 1.1 });
+        } else {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+  });
+}
 
 /* ---------- FAQ ---------- */
 document.querySelectorAll('.faq-btn').forEach(function(btn) {
