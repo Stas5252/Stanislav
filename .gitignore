@@ -1,0 +1,5 @@
+# Media & System
+*.MP4
+*.mp4
+.DS_Store
+Thumbs.db

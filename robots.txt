@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://stanislavweb.ru/sitemap.xml
+Host: https://stanislavweb.ru
