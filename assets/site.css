@@ -37,3 +37,5 @@ html{scroll-padding-top:84px}@media(max-width:600px){html{scroll-padding-top:76p
 @media(max-width:600px){.format-heading{margin-block:40px 24px}.format-heading p{font-size:13px}}
 
 .client-feedback{border-top:1px solid #393939;padding-top:22px;margin-top:30px}.client-feedback h3{font-size:17px;line-height:1.5;margin-bottom:12px}.client-feedback p{margin-bottom:12px}.client-feedback small{display:block;color:#aaa;font-size:12px;line-height:1.6}
+
+.concepts .real-project-cover{height:auto}
