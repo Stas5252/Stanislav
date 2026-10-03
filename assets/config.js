@@ -3,7 +3,7 @@
 // The loader still requires the visitor's permission and a production hostname.
 window.SITE_CONFIG = Object.freeze({
   telegramUsername: 'Butov52',
-  metrikaId: null,
-  analyticsEnabled: false,
+  metrikaId: 113373976,
+  analyticsEnabled: true,
   analyticsHosts: Object.freeze(['stanislavweb.ru', 'www.stanislavweb.ru'])
 });
