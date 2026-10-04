@@ -6,7 +6,7 @@
   const UTM_STORAGE = 'stanislavweb.attribution.v1';
   const CONSENT_STORAGE = 'stanislavweb.analytics.v1';
   const EVENTS = new Set(['hero_cta', 'service_click', 'project_open', 'brief_start', 'brief_prepare', 'telegram_click', 'email_click', 'phone_click']);
-  const PAGES = new Set(['/', '/landing/', '/expert-site/', '/business-site/', '/work/kristina-dimond/', '/work/n7/', '/privacy.html', '/consent.html']);
+  const PAGES = new Set(['/', '/landing/', '/expert-site/', '/business-site/', '/work/kristina-dimond/', '/work/n7/', '/work/rivera-hall/', '/privacy.html', '/consent.html']);
   const pagePath = PAGES.has(location.pathname) ? location.pathname : '/';
   const safeUtm = value => typeof value === 'string' && /^[a-zA-Z0-9][a-zA-Z0-9._-]{0,79}$/.test(value) ? value : '';
   const filterUtm = input => Object.fromEntries(UTM_KEYS.map(key => [key, safeUtm(input?.[key])]).filter(([, value]) => value));
@@ -50,9 +50,17 @@
     });
     if (!initialised) return;
     analyticsActive = true;
-    // Never send arbitrary query strings, fragments, form values or referrers.
-    sendAnalytics(counterId, 'hit', location.origin + pagePath, {
-      title: 'StanislavWeb', referer: '', params: {page: pagePath, ...attribution}
+    // Only validated campaign labels and the external referrer origin are sent.
+    // Arbitrary URL parameters, fragments, referrer paths and form values stay private.
+    const visitUrl = new URL(pagePath, location.origin);
+    for (const [key, value] of Object.entries(attribution)) visitUrl.searchParams.set(key, value);
+    let referrerOrigin = '';
+    try {
+      const referrer = new URL(document.referrer);
+      if (['https:', 'http:'].includes(referrer.protocol) && referrer.origin !== location.origin) referrerOrigin = referrer.origin + '/';
+    } catch { /* Direct visits have no referrer. */ }
+    sendAnalytics(counterId, 'hit', visitUrl.href, {
+      title: 'StanislavWeb', referer: referrerOrigin, params: {page: pagePath, ...attribution}
     });
     queueBriefStart();
   }
