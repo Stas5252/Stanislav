@@ -1,4 +1,4 @@
-/* A local brief and opt-in analytics. There is deliberately no lead endpoint. */
+/* Opt-in analytics for direct contact links. There is no lead endpoint. */
 (() => {
   'use strict';
   const config = window.SITE_CONFIG || {};
@@ -122,7 +122,7 @@
       banner.setAttribute('aria-label', 'Настройки аналитики');
       banner.style.cssText = 'position:fixed;z-index:1100;left:16px;right:16px;bottom:16px;max-width:630px;margin:auto;padding:22px;background:#151515;color:#fff;border:1px solid #555;font:14px/1.5 Manrope,system-ui,sans-serif;box-shadow:0 8px 32px #0005';
       const copy = document.createElement('p');
-      copy.textContent = 'Разрешить Яндекс.Метрику? Она помогает понять, какие страницы полезны. Запись экрана и содержимое брифа не передаются. Отказ не влияет на работу сайта.';
+      copy.textContent = 'Разрешить Яндекс.Метрику? Она помогает понять, какие страницы полезны. Запись экрана и содержимое личной переписки не передаются. Отказ не влияет на работу сайта.';
       const policy = document.createElement('a');
       policy.href = '/privacy.html';
       policy.textContent = 'Подробнее о данных';
