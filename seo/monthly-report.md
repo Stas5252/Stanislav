@@ -22,3 +22,5 @@ Next checks: validate guide publish; connect Yandex Webmaster; compare next full
 
 ## Verified Lighthouse mobile lab baseline, 2026-10-28
 Source: GitHub Actions run 40602786733 (Lighthouse CI artifacts). The four pages scored performance 94/99/100/98, SEO 100/100/100/100. The technical-brief guide had accessibility and best-practices 96, traced to tiny text and one button's color contrast; CSS correction committed separately. This is simulated/mobile lab data, **not** Chrome UX Report field data.
+
+- Second Lighthouse run 40603393535: all 6 pages returned 100/100 SEO, business and new checklist 100/100 in all four categories, technical brief accessibility verified at 100 after CSS fix. Comparison had role-table accessibility error (94), now corrected in source pending rerun.
