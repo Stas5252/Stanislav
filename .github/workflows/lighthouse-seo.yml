@@ -1,0 +1,34 @@
+name: Lighthouse mobile SEO and UX audit
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 8 * * 1'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/lighthouse-seo.yml'
+permissions:
+  contents: read
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Audit important public pages on mobile
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            https://stanislavweb.ru/
+            https://stanislavweb.ru/landing/
+            https://stanislavweb.ru/business-site/
+            https://stanislavweb.ru/guide/technical-brief/
+          runs: 1
+          uploadArtifacts: true
+          temporaryPublicStorage: false
+      - name: Explain the metrics
+        if: always()
+        run: |
+          echo '### Lighthouse lab audit' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Mobile performance, accessibility, best practices and SEO are laboratory measurements, not real-user Core Web Vitals.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Reports are saved as GitHub Actions artifacts. No Google Search Console/CrUX field metrics are accessed here.' >> "$GITHUB_STEP_SUMMARY"
