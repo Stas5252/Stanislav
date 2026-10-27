@@ -1,9 +1,9 @@
 # Integration status — 2026-10-28
 | Service | Status | Evidence / next action |
 |---|---|---|
-| GitHub Pages | VERIFIED_DONE | Public domain and gh-pages deployment; GitHub repo |
+| GitHub Pages | VERIFIED_DONE | Public domain and gh-pages deployment; GitHub repo; see PR #9 and Pages run 40602355457 |
 | Google Search Console (data) | VERIFIED_DONE | Windsor connector `searchconsole` -> https://stanislavweb.ru/ |
-| GSC sitemap freshness | IMPLEMENTED_UNVERIFIED | Source has 10 URLs before guide; provider still reports submitted=7 on Oct 3 |
+| GSC sitemap freshness | IMPLEMENTED_UNVERIFIED | Source now has 13 URLs; GSC provider still reports submitted=7 (Oct 3), so index coverage must be verified |
 | GSC query report | BLOCKED | Read returned zero rows; do not invent queries |
 | Yandex Webmaster | NEEDS_OWNER | Public verification file is present; no authenticated reports in assistant connection |
 | Yandex Metrika script | IMPLEMENTED_UNVERIFIED | Consent-aware `assets/leads.js`, public counter ID `113373976`; dashboard and real goals not read |

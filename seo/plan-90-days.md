@@ -22,3 +22,10 @@
 - Review Yandex/Bing/Google index coverage; evaluate any verified AI referrals.
 - Monthly report: impressions, clicks, qualified leads, sales, indexed URLs, updates, issues.
 The objective is qualified orders, not a guaranteed top ranking.
+
+## Verified 2026-10-28 execution
+- 13 canonical URLs in sitemap after content expansion; all three new guides built with original utility, no doorway pages.
+- Live HTTP 200/canonical checks performed for two phase-2 guides and main page; Github Pages deploy 40602355457 succeeded.
+- Live browser confirmed interactive format recommendation for multiple services.
+- Weekly technical check and IndexNow job already run successfully; mobile Lighthouse lab job launched on main (run 40602786733; inspect result before quoting metrics).
+- User's private Yandex Webmaster, verified leads and external client testimonials still not available. Owner access/permission required.

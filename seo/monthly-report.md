@@ -12,3 +12,10 @@ Source: connected Windsor.ai Google Search Console `searchconsole` / `https://st
 - AI-citations: NOT MEASURED.
 Changes: earlier production improvements include pricing, redesign, event venue pages, real cases, embedded brief, monochrome SVG icons; this release adds the original site-brief guide and tracking documentation.
 Next checks: validate guide publish; connect Yandex Webmaster; compare next full month after data accumulation.
+
+## Changes in current execution, 2026-10-28
+- Published two original informational pages with a functional choice widget and QA checklist; linked from the homepage and relevant services.
+- Corrected broken CTA anchor on the technical brief guide page.
+- GitHub Pages build `40602355457`: success. Confirmed both URLs returned HTTP 200 with unique canonical and title after publication.
+- Keyword hypotheses updated; no changes to the baseline Google Search Console numbers. Ranking, traffic and lead effect UNKNOWN as of release.
+- Weekly ChatGPT SEO statistics report created; weekly Lighthouse lab Action added.
