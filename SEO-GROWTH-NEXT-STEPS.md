@@ -1,32 +1,26 @@
-# Organic acquisition roadmap for stanislavweb.ru
-Date: 2026-10-28
-Target market: Russia-wide remote website development, with international inquiries supported (Russian language site).
+# SEO release strategy — 2026-10-28
+Production branch: gh-pages (NOT old main). Business: individual website design/development in Russian, remote across Russia and internationally.
 
-## Verified baseline from source
-- Production content is in GitHub Pages branch `gh-pages`, NOT the older `main` branch.
-- Robots.txt allows crawling and points to sitemap.xml.
-- Sitemap previously included 7 main service/case URLs.
-- Three service landing pages already existed: landing, expert-site, business-site.
-- Yandex Metrika is consent-based; requires checking goals from its dashboard.
-- Site CTA relies on Telegram, email and phone links; no server-side submissions were detected on the homepage.
+## Verified Google Search Console baseline
+Recent report up to 2026-10-25: October 18 impressions, 1 click, CTR 5.56%. Page-group totals differ from date-group totals due to aggregation and reporting granularity. Query-level data was not available through the connector. Do not claim a top ranking from this.
+Sitemap in GSC was last submitted 2026-10-03, before the new landing pages were created.
 
-## Shipped in this change
-- /website-cost/ — independent page for pricing/research intent; links to all service types.
-- /website-redesign/ — independent page for redesign intent, including SEO migration considerations.
-- Home-page internal links to both pages.
-- Updated sitemap and analytics page allowlist.
-- Native responsive styling and unique canonical, titles, descriptions, OG and JSON-LD.
+## Portfolio and trust
+- Homepage now features two relevant finished client examples with precise descriptions.
+- The N7 case URL and source are retained and linked textually, not deleted (avoid losing proof or breaking URLs).
+- Non-website logo sketches are removed from the homepage. No fictitious rankings, testimonials, sales lifts, traffic increases, client counts, or awards.
+- Main offer points to the brief so visitors can describe their task without opening another app first.
+- Do not turn the brief into a form that claims to have sent a message: it prepares a client-controlled draft.
 
-## Next steps requiring external verified data
-1. Search Console: last 90 days pages/queries/CTR/indexing and reasons for exclusions.
-2. Yandex Webmaster: regional targeting, search queries, indexed pages, diagnostics.
-3. Metrika: consented organic sessions, Telegram/email/phone goals, conversion.
-4. Keyword research (Wordstat + GSC) and manual intent grouping across Russia.
-5. Prioritize 5-10 real sector pages ONLY with actual work and differentiated content; no doorway city pages.
-6. Earn appropriate editorial and client references; avoid link schemes.
-7. Test contact friction: simpler visible phone/email path, lead quality measurement. Do not submit sensitive data without consent.
-8. Recheck static pages and site routing on live domain after merge.
-9. Track traffic, qualified inquiries and deals for 3-6 months, rather than promising top-one rankings.
+## IndexNow
+The root key file is used for free IndexNow (Yandex, Bing & participating engines) notifications.
+Notify only genuinely changed/new URLs. Not a ranking guarantee. Google does not use IndexNow; keep the sitemap in robots.txt and use Search Console.
 
-## Release notes
-Do not deploy `main` directly: it currently contains an older incompatible site version.
+## Next growth milestones
+1. Search Console: request the updated sitemap, inspect page-level indexing, search phrases/intent from GSC once available.
+2. Yandex Webmaster: connect/read diagnostics, indexation, query rankings; Yandex Metrika: organic sessions and actual CTA goals.
+3. Build content based on genuine project details & distinct commercial intent, not duplicate location doorway pages.
+4. Replace any case images that you personally consider weak with newly exported screenshots of real updated work. Do not generate fake client sites and pass them as case studies.
+5. Ask former clients for permission to include actual short testimonials, business outcomes, and source links; do not invent performance claims.
+6. Earn relevant editorial/client backlinks and assess inbound conversions, not merely CTR.
+7. No one can guarantee national top-one SERP placements on a date. Evaluate qualified leads and sales each month.
