@@ -23,6 +23,8 @@ jobs:
             https://stanislavweb.ru/landing/
             https://stanislavweb.ru/business-site/
             https://stanislavweb.ru/guide/technical-brief/
+            https://stanislavweb.ru/guide/landing-or-multipage/
+            https://stanislavweb.ru/guide/website-launch-checklist/
           runs: 1
           uploadArtifacts: true
           temporaryPublicStorage: false
