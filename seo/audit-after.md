@@ -49,3 +49,19 @@ Report (4 mobile URLs): https://github.com/Stas5252/Stanislav/actions/runs/40602
 **Specific fix in this release**: Lighthouse flagged the first guide's 11px numeric labels with #777 contrast 4.47:1 (below 4.5), a copy-template button with dark text on a dark background, and 11px preformatted template text on mobile. The style changes use darker labels, 12px label sizes, high-contrast white copy button, and 13px mobile template text. Run a comparable Lighthouse audit after deployment; do not claim improved scores before verification.
 
 **Caveat**: One simulated mobile Lighthouse run per URL is laboratory performance, not real-user field LCP/INP/CLS or a Google ranking promise. Server cache lifetime advice is not fully controlled by static GitHub Pages config.
+
+## Second Lighthouse pass (2026-10-28, after contrast/typography fix)
+Proof: https://github.com/Stas5252/Stanislav/actions/runs/40603393535 ; Lighthouse mobile lab artifacts were read and inspected.
+| Path | Performance | Accessibility | Best practices | SEO |
+|---|---:|---:|---:|---:|
+| / | 96 | 100 | 100 | 100 |
+| /landing/ | 100 | 100 | 100 | 100 |
+| /business-site/ | 100 | 100 | 100 | 100 |
+| /guide/technical-brief/ | 99 | 100 | 100 | 100 |
+| /guide/landing-or-multipage/ | 100 | 94 | 100 | 100 |
+| /guide/website-launch-checklist/ | 100 | 100 | 100 | 100 |
+
+The original accessibility/typography findings on /guide/technical-brief/ are fixed and verified (96 to 100 accessibility, 96 to 100 best practices).
+The comparison article received 94 accessibility because its `role="table"` lacked required `role="row"` and `role="cell"` children. This release fixes semantics and adds explicit format labels when mobile column headings are hidden; needs another mobile Lighthouse rerun for verification.
+
+Do not compare performance 94→96 as proof of a causal ranking gain; Lighthouse runs vary between samples and are not CrUX field data.

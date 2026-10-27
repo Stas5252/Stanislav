@@ -8,3 +8,5 @@
 - 2026-10-28 — weekly ChatGPT SEO review automation created. Do not confuse with autonomous search-ranking improvements; it checks and reports available statistics.
 
 - 2026-10-28 — Lighthouse CI run 40602786733 completed successfully for four mobile pages; genuine lab scores recorded and guide copy-button contrast / mobile font-size correction proposed in this release.
+
+- 2026-10-28 — second mobile Lighthouse run 40603393535 verified a11y fix on technical brief (100). Added row/rowheader/columnheader/cell roles to comparison table and mobile per-cell labels.
