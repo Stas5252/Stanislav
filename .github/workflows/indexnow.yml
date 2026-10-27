@@ -1,0 +1,23 @@
+name: Notify search engines (IndexNow)
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '37 7 * * 1'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/indexnow.yml'
+      - 'scripts/indexnow_submit.py'
+permissions:
+  contents: read
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Notify IndexNow of updated canonical URLs
+        run: python scripts/indexnow_submit.py
