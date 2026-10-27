@@ -6,7 +6,7 @@
   const UTM_STORAGE = 'stanislavweb.attribution.v1';
   const CONSENT_STORAGE = 'stanislavweb.analytics.v1';
   const EVENTS = new Set(['hero_cta', 'service_click', 'project_open', 'brief_start', 'brief_prepare', 'telegram_click', 'email_click', 'phone_click']);
-  const PAGES = new Set(['/', '/landing/', '/expert-site/', '/business-site/', '/website-cost/', '/website-redesign/', '/work/kristina-dimond/', '/work/n7/', '/work/rivera-hall/', '/privacy.html', '/consent.html']);
+  const PAGES = new Set(['/', '/landing/', '/expert-site/', '/business-site/', '/website-cost/', '/website-redesign/', '/event-venue-website/', '/work/kristina-dimond/', '/work/n7/', '/work/rivera-hall/', '/privacy.html', '/consent.html']);
   const pagePath = PAGES.has(location.pathname) ? location.pathname : '/';
   const safeUtm = value => typeof value === 'string' && /^[a-zA-Z0-9][a-zA-Z0-9._-]{0,79}$/.test(value) ? value : '';
   const filterUtm = input => Object.fromEntries(UTM_KEYS.map(key => [key, safeUtm(input?.[key])]).filter(([, value]) => value));
