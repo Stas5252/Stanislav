@@ -19,3 +19,22 @@
 .seo-related{display:flex;flex-wrap:wrap;gap:20px;align-items:center;padding-block:32px 58px;font-size:13px}.seo-related>span{color:#999}.seo-related a{text-decoration:underline;text-underline-offset:4px}
 @media(max-width:900px){.seo-content-grid{gap:32px}.seo-prices{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.seo-pathways{padding-block:48px}.seo-cards,.seo-prices,.seo-content-grid{grid-template-columns:1fr}.seo-cards a{min-height:175px;padding:23px}.seo-content-grid{margin-top:45px;padding-top:35px}.seo-faq{padding-block:50px}.seo-faq-list summary{font-size:15px}.seo-prices article{min-height:0}}
+/* Site lead-brief: existing client-side brief flow, no collection endpoint. */
+.brief-workspace{width:100%;max-width:900px;margin:36px auto 0}
+.brief-intro{max-width:650px;margin:12px 0 30px}
+.brief-intro h3{font:700 clamp(22px,3vw,30px)/1.35 var(--font-head);letter-spacing:-.04em}
+.brief-intro p{font-size:14px;line-height:1.8;color:#aaa;margin-top:12px}
+.brief-workspace .field textarea{width:100%}
+.brief-workspace .brief-result .actions{display:flex;align-items:center;flex-wrap:wrap;gap:13px}
+.brief-workspace .brief-result .actions .text-link{padding:12px 6px}
+.brief-workspace .brief-result textarea{min-height:170px}
+.seo-pathways .seo-cards>a:nth-child(3):last-child{grid-column:1/-1;min-height:145px}
+.seo-industry-link{max-width:1150px;margin:20px auto 40px;padding:24px 28px;border:1px solid #404040;border-radius:12px;line-height:1.65;font-size:14px;color:#bbb}
+.seo-industry-link a{text-decoration:underline;text-underline-offset:4px;color:inherit}
+.seo-case{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;border-top:1px solid #ccc;margin-top:70px;padding-top:60px}
+.seo-case-visual img{width:100%;height:auto;border:1px solid #ccc;border-radius:12px}
+.seo-case h2{margin:16px 0;font-size:clamp(28px,3.5vw,42px)}
+.seo-case p{font-size:14px;line-height:1.8;margin:16px 0}
+.seo-case-links{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:22px}
+@media(max-width:760px){.seo-case{grid-template-columns:1fr;gap:22px}.seo-industry-link{margin:20px 20px 30px}}
+@media(max-width:600px){.seo-pathways .seo-cards>a:nth-child(3):last-child{grid-column:auto}.brief-top{padding:16px 0}.brief-workspace .brief-actions{flex-wrap:wrap;gap:12px}.brief-workspace .brief-actions .button{width:100%}.brief-workspace .field-row{grid-template-columns:1fr}.brief-workspace .brief-result .button{width:100%}}
