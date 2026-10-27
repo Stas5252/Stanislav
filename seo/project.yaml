@@ -1,0 +1,26 @@
+domain: https://stanislavweb.ru/
+business: Individual freelance website design and development
+legal_status: self-employed
+operator_name: Бутов Станислав Альбертович
+country_target: Russia-wide (remote), plus international clients
+language: ru-RU
+business_goal: qualified enquiries and website orders
+priority_commercial_pages:
+  - /
+  - /landing/
+  - /business-site/
+  - /expert-site/
+  - /website-cost/
+  - /website-redesign/
+  - /event-venue-website/
+main_conversion: real message sent via Telegram/email (not merely CTA click)
+repo: Stas5252/Stanislav
+production_branch: gh-pages
+ci_branch: main
+document_version: SEO MASTER 2026 1.0
+date: 2026-10-28
+owner_confirmation_needed:
+  - Yandex Webmaster delegated read access
+  - actual lead counts and business quality
+  - validation of quotes, testimonials, and additional niche cases
+notes: Search volume, rankings and AI citations cannot be guessed.

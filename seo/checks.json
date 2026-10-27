@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-28",
+  "production": "https://stanislavweb.ru/",
+  "expected_indexable_urls_before": 10,
+  "expected_indexable_urls_after": 11,
+  "new_page": "/guide/technical-brief/",
+  "checks": [
+    {
+      "id": "sitemap_urls",
+      "status": "IMPLEMENTED_UNVERIFIED",
+      "proof": "sitemap.xml updated in commit"
+    },
+    {
+      "id": "guide_canonical",
+      "status": "IMPLEMENTED_UNVERIFIED",
+      "proof": "guide/technical-brief/index.html"
+    },
+    {
+      "id": "guide_article_schema",
+      "status": "IMPLEMENTED_UNVERIFIED",
+      "proof": "JSON-LD Article and BreadcrumbList"
+    },
+    {
+      "id": "guide_copy",
+      "status": "IMPLEMENTED_UNVERIFIED",
+      "proof": "Browser JS added, needs live click test"
+    },
+    {
+      "id": "GSC_data",
+      "status": "VERIFIED_DONE",
+      "proof": "Windsor.ai connected account and Oct 2026 read"
+    },
+    {
+      "id": "Yandex_data",
+      "status": "NEEDS_OWNER",
+      "proof": "No delegated read data"
+    },
+    {
+      "id": "qualified_leads",
+      "status": "NEEDS_OWNER",
+      "proof": "Contact click is not confirmed sale"
+    }
+  ]
+}
