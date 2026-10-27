@@ -99,3 +99,32 @@
   .seo-compare-row:not(.seo-compare-head) p[role="cell"]:nth-of-type(1)::before{content:"Лендинг"}
   .seo-compare-row:not(.seo-compare-head) p[role="cell"]:nth-of-type(2)::before{content:"Многостраничный сайт"}
 }
+
+/* Lead acquisition: honest self-check plus contact pathway, no external scan. */
+.audit-home-banner{display:flex;align-items:center;justify-content:space-between;gap:36px;margin-block:16px 55px;padding:30px;border:1px solid #424242;border-radius:14px}
+.audit-home-banner>div{max-width:710px}.audit-home-banner h2{font:700 clamp(24px,2.8vw,34px)/1.3 var(--font-head);margin:13px 0;letter-spacing:-.04em}.audit-home-banner p{font-size:14px;color:#aaa;line-height:1.7}.audit-home-banner .button{margin:0;white-space:nowrap}
+.audit-cross-link{border:1px solid #555;border-radius:12px;padding:25px;margin-block:32px;font-size:14px;line-height:1.8}.audit-cross-link p{margin-top:10px}.audit-cross-link a{text-decoration:underline;text-underline-offset:4px}
+.audit-disclaimer{font:12px/1.7 var(--font-mono);color:#999;margin-top:24px;max-width:750px}
+.audit-wrap{color:#111}.audit-tool-header{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:32px}
+.audit-tool-header h2{margin:13px 0}.audit-tool-header p{font-size:14px;line-height:1.8}.audit-progress{font:12px var(--font-mono);white-space:nowrap;color:#555;border:1px solid #ccc;border-radius:9px;padding:12px}
+.audit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.audit-question{background:#fff;border:1px solid #d2d2d2;border-radius:12px;padding:22px;min-width:0}
+.audit-question legend{font:700 18px var(--font-head);padding:0 6px}.audit-question legend span{font:12px var(--font-mono);color:#555;margin-right:7px}
+.audit-question>p{font-size:14px;line-height:1.75;margin:9px 0 20px}
+.audit-answers{display:flex;flex-wrap:wrap;gap:10px}
+.audit-answers label{cursor:pointer;display:flex;align-items:center;gap:6px;padding:8px 10px;border-radius:7px;border:1px solid #bbb;font-size:13px;background:#fafafa}
+.audit-answers input{accent-color:#111;width:16px;height:16px}
+.audit-controls{display:flex;flex-wrap:wrap;gap:14px;margin-top:25px}.audit-controls .button{margin:0}
+.audit-results{background:#fff;border:1px solid #aaa;border-radius:14px;padding:27px;margin-top:35px}
+.audit-results h3{font:700 clamp(22px,3vw,30px) var(--font-head);margin:14px 0}.audit-results>p{font-size:14px;line-height:1.8}
+.audit-results ul{margin:24px 0;padding-left:22px}.audit-results li{font-size:14px;line-height:1.85;margin-bottom:12px}
+.audit-next{border-top:1px solid #ddd;padding-top:26px}.audit-next>p{font-size:14px;line-height:1.8;margin-bottom:20px}
+.audit-site-label{font-weight:700;display:block;font-size:14px;margin-bottom:10px}.audit-site-label small{font-weight:400;color:#555}
+#auditSiteUrl{width:100%;max-width:510px;background:#fff;border:1px solid #bbb;padding:15px;border-radius:8px;color:#111}
+.audit-result-buttons{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:20px}.audit-result-buttons .button{margin:0}
+.audit-result-buttons>a:last-child{text-decoration:underline;text-underline-offset:4px;font-size:14px}
+#auditStatus{font-size:13px;min-height:22px;margin-top:12px}
+.audit-process .section-title{margin-top:15px}.audit-process-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:30px}.audit-process-grid article{border:1px solid #444;border-radius:12px;padding:24px}
+.audit-process-grid article span{font:12px var(--font-mono);color:#aaa}.audit-process-grid h3{font:700 22px var(--font-head);margin:17px 0}.audit-process-grid p{font-size:14px;line-height:1.8;color:#aaa}.audit-boundary{font-size:13px;color:#aaa;line-height:1.8;margin-top:23px;max-width:760px}
+@media(max-width:850px){.audit-grid,.audit-process-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.audit-home-banner{flex-direction:column;align-items:flex-start;margin-block:22px 45px;padding:23px}.audit-home-banner .button{white-space:normal}.audit-grid,.audit-process-grid{grid-template-columns:1fr}.audit-tool-header{align-items:flex-start;flex-direction:column}.audit-result-buttons>a.button,.audit-result-buttons>button.button{width:100%}.audit-question{padding:18px}}

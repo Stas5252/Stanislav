@@ -17,3 +17,5 @@ query,intent,cluster,target_url,priority,data_source,search_volume,decision
 сайт для цветочного магазина,commercial,flower-sector,NOT_ASSIGNED,P3,candidate query; case evidence pending,N/A,do not publish before proof
 "лендинг или многостраничный сайт","informational/comparison","landing-vs-multi","/guide/landing-or-multipage/","P2","SERP observed via Firecrawl 2026-10-28","N/A","new original decision guide"
 "чек лист перед запуском сайта","informational","website-launch-checklist","/guide/website-launch-checklist/","P2","SERP observed via Firecrawl 2026-10-28","N/A","new practical QA checklist"
+"бесплатный разбор сайта","commercial","website-audit","/website-audit/","P1","SERP observed via web 2026-10-28","N/A","new self-check and personal audit path"
+"аудит сайта для увеличения заявок","commercial","website-audit","/website-audit/","P1","candidate query; validate Wordstat","N/A","new self-check and personal audit path"
