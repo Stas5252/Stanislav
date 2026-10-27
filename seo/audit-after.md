@@ -36,3 +36,16 @@ Audit date: 2026-10-28. Site: https://stanislavweb.ru/ . Sources: direct GitHub 
 
 ## Policy
 No invented clients, case results, ranking guarantees, city doorway pages or fake reviews. New guides are not a substitute for commercial relevance and genuine reputation.
+
+## First independent Lighthouse lab evidence (2026-10-28)
+Report (4 mobile URLs): https://github.com/Stas5252/Stanislav/actions/runs/40602786733 — GitHub Actions SUCCESS, reports in artifact `lighthouse-results`.
+| URL | Performance | Accessibility | Best practices | SEO | LCP (lab) | CLS (lab) |
+|---|---:|---:|---:|---:|---:|---:|
+| / | 94 | 100 | 100 | 100 | 2.2 s | 0 |
+| /landing/ | 99 | 100 | 100 | 100 | 2.0 s | 0.032 |
+| /business-site/ | 100 | 100 | 100 | 100 | 1.1 s | 0.032 |
+| /guide/technical-brief/ | 98 | 96 | 96 | 100 | 1.9 s | 0.052 |
+
+**Specific fix in this release**: Lighthouse flagged the first guide's 11px numeric labels with #777 contrast 4.47:1 (below 4.5), a copy-template button with dark text on a dark background, and 11px preformatted template text on mobile. The style changes use darker labels, 12px label sizes, high-contrast white copy button, and 13px mobile template text. Run a comparable Lighthouse audit after deployment; do not claim improved scores before verification.
+
+**Caveat**: One simulated mobile Lighthouse run per URL is laboratory performance, not real-user field LCP/INP/CLS or a Google ranking promise. Server cache lifetime advice is not fully controlled by static GitHub Pages config.

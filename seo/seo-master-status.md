@@ -8,7 +8,7 @@ Use only VERIFIED_DONE, IMPLEMENTED_UNVERIFIED, NEEDS_OWNER, BLOCKED, NOT_APPLIC
 6. Information architecture: IMPLEMENTED_UNVERIFIED — existing commercial pages and three distinct practical guides.
 7. On-page SEO: IMPLEMENTED_UNVERIFIED — unique existing titles/headings; all three guides with unique metadata, canonicals and Article schema.
 8. Technical SEO: IMPLEMENTED_UNVERIFIED — existing sitemap/robots/IndexNow; not all mirrors or bot crawling verified.
-9. Speed/a11y: IMPLEMENTED_UNVERIFIED — Lighthouse lab workflow active; real-user CWV still unavailable.
+9. Speed/a11y: VERIFIED_DONE for Lighthouse mobile lab on 4 pages (run 40602786733); real-user CWV still BLOCKED.
 10. Structured data: IMPLEMENTED_UNVERIFIED — Article/Breadcrumb schema on new guide; validate at production.
 11. Content: IMPLEMENTED_UNVERIFIED — three original guides (including decision tool and QA checklist) with 12-entry pipeline; the rest not auto-published.
 12. Accounts: GSC VERIFIED_DONE; Yandex/Bing NEEDS_OWNER.

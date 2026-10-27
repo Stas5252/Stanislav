@@ -6,3 +6,5 @@
 - 2026-10-28 — PR #9: published original /guide/landing-or-multipage/ and /guide/website-launch-checklist/; sitemap grew to 13 canonical URLs, added home and service links, fixed missing homepage-brief anchor in /guide/technical-brief/.
 - 2026-10-28 — PR #10: enabled mobile Lighthouse laboratory audit through GitHub Actions on main, retained separate production gh-pages branch.
 - 2026-10-28 — weekly ChatGPT SEO review automation created. Do not confuse with autonomous search-ranking improvements; it checks and reports available statistics.
+
+- 2026-10-28 — Lighthouse CI run 40602786733 completed successfully for four mobile pages; genuine lab scores recorded and guide copy-button contrast / mobile font-size correction proposed in this release.
