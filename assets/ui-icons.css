@@ -1,0 +1,12 @@
+/* Platform-independent monochrome navigation icons, including iOS Safari. */
+.ui-arrow,.ui-check{display:inline-block;width:.88em;height:.88em;vertical-align:-.12em;flex:none;overflow:visible;color:inherit}
+.ui-arrow--up-right{transform:none}
+.ui-arrow--right{transform:rotate(45deg)}
+.ui-arrow--down-right{transform:rotate(90deg)}
+.ui-arrow--down{transform:rotate(135deg)}
+.ui-arrow--down-left{transform:rotate(180deg)}
+.ui-arrow--left{transform:rotate(225deg)}
+.ui-arrow--up-left{transform:rotate(270deg)}
+.ui-arrow--up{transform:rotate(315deg)}
+/* Text arrows in the older flow diagram are replaced too, so iOS cannot substitute emoji. */
+.landing-map li:not(:last-child)::after,.map-flow li:not(:last-child)::after{content:"";display:inline-block;width:.85em;height:.85em;min-width:.85em;background:currentColor;transform:rotate(135deg);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 15 15 5M6 5h9v9' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 15 15 5M6 5h9v9' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
