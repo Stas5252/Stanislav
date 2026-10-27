@@ -1,0 +1,13 @@
+id,planned_period,title,intent,target_url,status,priority,required_original_value
+001,2026-10-28,ТЗ на разработку сайта: шаблон,brief / how-to,/guide/technical-brief/,published,P1,Original ready-to-copy brief and real project examples
+002,2026-11,Как выбрать подрядчика для сайта,selection checklist,NOT_ASSIGNED,draft_review,P1,Compare deliverables and contract conditions; verify legal aspects
+003,2026-11,Что входит в разработку сайта под ключ,scope / commercial,/website-cost/,improve_existing,P1,Use current price page; avoid duplicate article
+004,2026-11,Сколько страниц нужно сайту компании,decision guide,NOT_ASSIGNED,draft_review,P2,Real architecture examples from case studies
+005,2026-11,Лендинг или многостраничный сайт,comparison,NOT_ASSIGNED,draft_review,P2,Practical examples and when not to choose landing
+006,2026-11,Как подготовить фотографии для сайта,preparation checklist,NOT_ASSIGNED,draft_review,P2,Original size/rights examples; no generic listicle
+007,2026-12,Сайт банкетной площадки: что должно быть,industry guide,/event-venue-website/,improve_existing,P2,Ground in Rivera Hall case; not a duplicate page
+008,2026-12,Редизайн сайта без потери важных адресов,migration guide,/website-redesign/,improve_existing,P2,Check real URL migration capabilities first
+009,2026-12,Как оценить готовность сайта к запуску,original QA checklist,NOT_ASSIGNED,draft_review,P2,Repeatable mobile/forms/indexing QA and examples
+010,2026-12,Стоимость лендинга: из чего складывается,price factors,/landing/,improve_existing,P2,Use current real pricing and scoping
+011,2027-01,Как выбрать CMS и способ редактирования,comparison,NOT_ASSIGNED,draft_review,P3,Evidence for maintenance workflows and real needs
+012,2027-01,Как измерить заявки с сайта,analytics practical,NOT_ASSIGNED,draft_review,P3,Only verified consented events and accepted leads

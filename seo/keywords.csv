@@ -1,0 +1,17 @@
+query,intent,cluster,target_url,priority,data_source,search_volume,decision
+разработка сайтов под ключ,commercial,website-development,/,P1,SERP observed via Firecrawl 2026-10-28,N/A,existing: optimize/measure
+заказать сайт для бизнеса под ключ,commercial,website-business,/business-site/,P1,SERP observed via Firecrawl 2026-10-28,N/A,existing: optimize/measure
+создание сайтов для бизнеса,commercial,website-business,/business-site/,P1,candidate query; validate Wordstat,N/A,existing
+разработка лендинга под ключ,commercial,landing,/landing/,P1,SERP observed via Firecrawl 2026-10-28,N/A,existing
+заказать лендинг под ключ стоимость,commercial,landing-price,/landing/,P1,SERP observed via Firecrawl 2026-10-28,N/A,existing: compare price
+сколько стоит разработка сайта,comparison,website-price,/website-cost/,P1,candidate query; validate Wordstat,N/A,existing
+сайт для эксперта под ключ,commercial,expert-site,/expert-site/,P2,candidate query; validate Wordstat,N/A,existing
+редизайн сайта под ключ,commercial,redesign,/website-redesign/,P2,candidate query; validate Wordstat,N/A,existing
+сайт для банкетного зала под ключ,commercial,event-venue,/event-venue-website/,P2,candidate query; validate Wordstat,N/A,existing with case
+как составить техническое задание на сайт,informational,technical-brief,/guide/technical-brief/,P2,SERP observed via Firecrawl 2026-10-28,N/A,new original guide
+шаблон тз на разработку сайта,informational,technical-brief,/guide/technical-brief/,P2,candidate query; validate Wordstat,N/A,new original guide
+как заказать сайт чтобы не переделывать,informational,technical-brief,/guide/technical-brief/,P3,candidate query; validate Wordstat,N/A,new original guide
+сайт для мебельной компании,commercial,furniture-sector,NOT_ASSIGNED,P2,candidate query; real case details needed,N/A,review case evidence first
+сайт для строительной компании,commercial,construction-sector,NOT_ASSIGNED,P2,candidate query; real case details needed,N/A,review case evidence first
+создание сайта для стоматологии,commercial,dental-sector,NOT_ASSIGNED,P3,candidate query; real licensed case needed,N/A,do not publish unsupported claims
+сайт для цветочного магазина,commercial,flower-sector,NOT_ASSIGNED,P3,candidate query; case evidence pending,N/A,do not publish before proof

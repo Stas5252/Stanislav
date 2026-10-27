@@ -1,0 +1,12 @@
+cluster,canonical_url,intent,primary_query_hypothesis,page_status,priority
+national website design,/,commercial,разработка сайтов под ключ,existing homepage,P1
+business website,/business-site/,commercial,заказать сайт для бизнеса под ключ,existing,P1
+landing design,/landing/,commercial,разработка лендинга под ключ,existing,P1
+expert website,/expert-site/,commercial,сайт для эксперта под ключ,existing,P2
+price,/website-cost/,comparison/commercial,сколько стоит разработка сайта,existing,P1
+redesign,/website-redesign/,commercial,редизайн сайта под ключ,existing,P2
+event venue,/event-venue-website/,commercial,сайт для банкетного зала,existing plus case,P2
+technical brief,/guide/technical-brief/,informational/lead-assisted,шаблон тз на разработку сайта,new article,P2
+Rivera Hall project,/work/rivera-hall/,portfolio,пример сайта площадки мероприятий,existing case,P2
+Kristina Diamond project,/work/kristina-dimond/,portfolio,пример сайта стилиста,existing case,P2
+N7 esports project,/work/n7/,portfolio,пример сайта игрового клуба,existing case,P3
