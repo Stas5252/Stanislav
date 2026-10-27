@@ -15,3 +15,4 @@
 | Yandex Business / 2GIS | NOT_APPLICABLE pending factual address | Nationwide remote freelancer; do not invent physical office |
 | E-commerce/merchant feeds | NOT_APPLICABLE | Services website, no catalog checkout |
 | CRM and completed message conversions | NEEDS_OWNER | Browser prepares message; actual send/sale not verifiable from code |
+| Lighthouse mobile lab | VERIFIED_DONE | GitHub Actions run 40602786733: four pages measured; 94/99/100/98 performance; SEO 100 each; field CWV not inferred |

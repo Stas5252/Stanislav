@@ -19,3 +19,6 @@ Next checks: validate guide publish; connect Yandex Webmaster; compare next full
 - GitHub Pages build `40602355457`: success. Confirmed both URLs returned HTTP 200 with unique canonical and title after publication.
 - Keyword hypotheses updated; no changes to the baseline Google Search Console numbers. Ranking, traffic and lead effect UNKNOWN as of release.
 - Weekly ChatGPT SEO statistics report created; weekly Lighthouse lab Action added.
+
+## Verified Lighthouse mobile lab baseline, 2026-10-28
+Source: GitHub Actions run 40602786733 (Lighthouse CI artifacts). The four pages scored performance 94/99/100/98, SEO 100/100/100/100. The technical-brief guide had accessibility and best-practices 96, traced to tiny text and one button's color contrast; CSS correction committed separately. This is simulated/mobile lab data, **not** Chrome UX Report field data.
