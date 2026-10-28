@@ -64,3 +64,6 @@ html{scroll-padding-top:84px}@media(max-width:600px){html{scroll-padding-top:76p
 .menu-overlay{overflow-y:auto;overscroll-behavior:contain}
 @media(max-width:600px){.menu-overlay{gap:clamp(12px,2.2vh,20px)}.menu-overlay a{font-size:clamp(20px,5.7vw,25px)}}
 @media(max-height:590px){.menu-overlay{justify-content:flex-start;padding-top:90px;padding-bottom:25px;gap:12px}.menu-overlay a{font-size:20px}}
+
+/* Responsive QA: long Russian process heading must fit a 320px phone. */
+@media(max-width:360px){.process-section .section-heading .section-title{font-size:clamp(25px,7.7vw,30px);overflow-wrap:anywhere;hyphens:auto}}
