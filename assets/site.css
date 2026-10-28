@@ -59,3 +59,8 @@ html{scroll-padding-top:84px}@media(max-width:600px){html{scroll-padding-top:76p
 .case-overview dd{font-size:13px;line-height:1.65;color:#fff;margin:0}
 @media(max-width:900px){.case-overview{grid-template-columns:1fr;gap:22px}.case-overview dl{gap:14px}}
 @media(max-width:600px){.case-overview{margin-block:12px 30px}.case-overview dl{grid-template-columns:1fr;gap:17px}.case-overview dl>div{padding-block:12px;border-top:1px solid #2d2d2d}.case-overview-heading>p{max-width:100%}}
+
+/* Navigation remains usable with six links on short mobile displays. */
+.menu-overlay{overflow-y:auto;overscroll-behavior:contain}
+@media(max-width:600px){.menu-overlay{gap:clamp(12px,2.2vh,20px)}.menu-overlay a{font-size:clamp(20px,5.7vw,25px)}}
+@media(max-height:590px){.menu-overlay{justify-content:flex-start;padding-top:90px;padding-bottom:25px;gap:12px}.menu-overlay a{font-size:20px}}
