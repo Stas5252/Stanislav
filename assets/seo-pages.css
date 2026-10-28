@@ -198,3 +198,8 @@
   .instant-audit-actions .instant-audit-email{text-align:center;padding:6px}
   .audit-tool-header .section-title{font-size:clamp(27px,8vw,38px)}
 }
+/* Full-site mobile QA 2026-10-28: don't force long service summaries onto a single 320px line. */
+@media(max-width:600px){
+  .service-summary{min-width:0;max-width:100%}
+  .service-summary strong{white-space:normal;max-width:100%;min-width:0;overflow-wrap:break-word;font-size:clamp(16px,5.5vw,20px);line-height:1.4}
+}
