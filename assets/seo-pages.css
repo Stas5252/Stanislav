@@ -141,3 +141,60 @@
 .seo-pathways .seo-cards a:hover em,.seo-pathways .seo-cards a:focus-visible em{border-color:#fff}
 @media(max-width:960px){.seo-pathways .seo-cards{grid-template-columns:1fr}.seo-pathways .seo-cards>a{min-height:190px}}
 @media(max-width:600px){.seo-pathways{padding-block:46px 38px}.seo-pathways .seo-cards{gap:14px;margin-top:25px}.seo-pathways .seo-cards>a{min-height:178px;padding:22px}.seo-pathways .seo-cards strong{font-size:23px}.seo-pathways .seo-cards .seo-card-index{font-size:10px}}
+
+/* Progressive lead magnet: lightweight public-page content check. */
+.audit-hero{padding-block:115px 65px}
+.audit-hero .head{max-width:1050px;font-size:clamp(40px,6.1vw,77px);line-height:1.1;letter-spacing:-.055em;overflow-wrap:break-word}
+.audit-hero .audit-hero-lead{max-width:870px;font-size:clamp(16px,2vw,21px);line-height:1.65;color:#b1b1b1;margin-top:22px}
+.instant-audit-box{margin-top:36px;width:100%;max-width:1030px;border:1px solid #555;border-radius:18px;padding:30px;background:#0c0c0c}
+.instant-audit-form>label{display:block;font-size:14px;font-weight:650;margin-bottom:13px}
+.instant-audit-row{display:flex;gap:12px;align-items:stretch}
+.instant-audit-row input{flex:1;min-width:0;width:100%;font:16px/1.5 var(--font-sans);background:#1a1a1a;color:#fff;border:1px solid #5c5c5c;border-radius:9px;padding:16px;outline-offset:3px}
+.instant-audit-row input:focus{border-color:#fff;outline:2px solid #777}
+.instant-audit-row input::placeholder{color:#888}
+.instant-audit-row .button{flex:none;white-space:nowrap;background:#fff;border:1px solid #fff;color:#111;margin:0;padding-inline:28px}
+.instant-audit-row .button:hover,.instant-audit-row .button:focus-visible{background:#e5e5e5;color:#111}
+.instant-audit-row button:disabled{opacity:.75;cursor:wait}
+.instant-audit-form .instant-audit-privacy{max-width:870px;margin:14px 0 0;color:#989898;font-size:12px;line-height:1.7}
+.instant-audit-privacy a{color:#ddd;text-decoration:underline;text-underline-offset:3px}
+.instant-audit-status{font-size:13px;line-height:1.65;margin:12px 0 0;color:#d0d0d0}
+.instant-audit-status:empty{display:none}
+.instant-audit-result{background:#f6f6f5;color:#111;margin-top:30px;padding:30px;border-radius:14px}
+#instantAuditResult[hidden]{display:none!important}
+.instant-audit-result-top .eyebrow{color:#666}
+.instant-audit-result-top h2{font:700 clamp(21px,3vw,31px)/1.3 var(--font-head);letter-spacing:-.04em;overflow-wrap:anywhere;margin:9px 0}
+.instant-audit-result-top p{font-size:13px;line-height:1.7;color:#444}
+.instant-audit-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:25px 0;padding:0;list-style:none}
+.instant-audit-finding{border:1px solid #d5d5d5;border-radius:9px;padding:17px;background:#fff}
+.instant-audit-finding strong{font-size:13px;line-height:1.5;display:block;overflow-wrap:anywhere}
+.instant-audit-finding p{margin-top:9px;font-size:12px;line-height:1.65;color:#444}
+.instant-audit-finding.unknown{border-style:dashed}
+.instant-audit-next{border-top:1px solid #d0d0d0;padding-top:24px}
+.instant-audit-next h3{font:700 clamp(20px,2.3vw,26px)/1.3 var(--font-head);letter-spacing:-.035em}
+.instant-audit-next>p{font-size:13px;line-height:1.75;color:#444;margin-top:10px}
+.instant-audit-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-top:22px}
+.instant-audit-actions .button{margin:0}
+.instant-audit-actions .button-outline{background:#fff;color:#111;border-color:#555}
+.instant-audit-actions .button-outline:hover,.instant-audit-actions .button-outline:focus-visible{color:#111;background:#eaeaea}
+.instant-audit-actions .button:not(.button-outline){background:#111;color:#fff;border-color:#111}
+.instant-audit-actions .instant-audit-email,.instant-audit-source{font-size:13px;text-decoration:underline;text-underline-offset:4px}
+#instantAuditCopyStatus{font-size:12px;line-height:1.6;margin-top:12px}
+.instant-audit-footnote{font-size:12px;line-height:1.7;color:#555;margin:24px 0 10px;border-top:1px solid #dadada;padding-top:19px}
+.audit-manual-jump{font-size:13px;line-height:1.6;margin-top:20px;color:#aaa}
+.audit-manual-jump a{text-decoration:underline;text-underline-offset:4px;color:#fff}
+.audit-tool-header .section-title{overflow-wrap:anywhere;font-size:clamp(29px,4.1vw,48px)}
+@media(max-width:680px){
+  .audit-hero{padding-block:102px 45px}
+  .audit-hero .head{font-size:clamp(37px,9vw,54px);line-height:1.13}
+  .audit-hero .audit-hero-lead{margin-top:19px;font-size:16px;line-height:1.58}
+  .instant-audit-box{margin-top:25px;padding:19px;border-radius:14px}
+  .instant-audit-row{flex-direction:column;align-items:stretch}
+  .instant-audit-row input{min-height:52px}
+  .instant-audit-row .button{min-height:52px;width:100%}
+  .instant-audit-list{grid-template-columns:1fr}
+  .instant-audit-result{padding:19px}
+  .instant-audit-actions{flex-direction:column;align-items:stretch}
+  .instant-audit-actions .button{width:100%;justify-content:center}
+  .instant-audit-actions .instant-audit-email{text-align:center;padding:6px}
+  .audit-tool-header .section-title{font-size:clamp(27px,8vw,38px)}
+}
