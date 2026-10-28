@@ -91,3 +91,8 @@ html{scroll-padding-top:84px}@media(max-width:600px){html{scroll-padding-top:76p
   .footer-guides{gap:12px 20px}
   .footer-guides span{flex-basis:100%}
 }
+
+/* Clear secondary action on homepage: free website review. */
+.hero-section .hero-audit-link{border:1px solid #a3a3a3;color:#fff;background:#151515}
+.hero-section .hero-audit-link:hover,.hero-section .hero-audit-link:focus-visible{background:#252525;border-color:#fff;color:#fff}
+@media(max-width:600px){.hero-section .hero-audit-link{border-color:#bcbcbc}.hero-section .actions{gap:11px}}
