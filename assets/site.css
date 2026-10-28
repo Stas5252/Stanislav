@@ -39,3 +39,28 @@ html{scroll-padding-top:84px}@media(max-width:600px){html{scroll-padding-top:76p
 .client-feedback{border-top:1px solid #393939;padding-top:22px;margin-top:30px}.client-feedback h3{font-size:17px;line-height:1.5;margin-bottom:12px}.client-feedback p{margin-bottom:12px}.client-feedback small{display:block;color:#aaa;font-size:12px;line-height:1.6}
 
 .concepts .real-project-cover{height:auto}
+
+/* Commercial clarity: concrete scope of each site format. */
+.site-purpose .delivery-index{display:block;font:600 10px/1.6 var(--font-mono);letter-spacing:.045em;color:#555;margin-bottom:14px}
+.pricing-card{background:#fff}
+.pricing-card>p{min-height:0;margin-bottom:18px}
+.pricing-includes{list-style:none;margin:0 0 26px;padding:17px 0 0;border-top:1px solid #ddd;display:grid;gap:10px}
+.pricing-includes li{position:relative;padding-left:17px;color:#333;font-size:12px;line-height:1.45}
+.pricing-includes li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;border-radius:50%;background:#383838}
+.price-val{margin-top:auto}
+@media(max-width:600px){.pricing-card>p{margin-bottom:16px}.pricing-includes{margin-bottom:24px}}
+
+/* Real portfolio project scope — concise evidence, not claimed business metrics. */
+.case-overview{display:grid;grid-template-columns:.9fr 2fr;gap:36px;margin-block:26px 42px;padding-block:24px;border-block:1px solid #303030}
+.case-overview-heading>p{color:#999;font-size:12px;line-height:1.7;max-width:290px;margin-top:12px}
+.case-overview dl{margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:25px}
+.case-overview dl>div{min-width:0}
+.case-overview dt{font:600 10px/1.6 var(--font-mono);color:#999;letter-spacing:.06em;margin-bottom:10px}
+.case-overview dd{font-size:13px;line-height:1.65;color:#fff;margin:0}
+@media(max-width:900px){.case-overview{grid-template-columns:1fr;gap:22px}.case-overview dl{gap:14px}}
+@media(max-width:600px){.case-overview{margin-block:12px 30px}.case-overview dl{grid-template-columns:1fr;gap:17px}.case-overview dl>div{padding-block:12px;border-top:1px solid #2d2d2d}.case-overview-heading>p{max-width:100%}}
+
+/* Navigation remains usable with six links on short mobile displays. */
+.menu-overlay{overflow-y:auto;overscroll-behavior:contain}
+@media(max-width:600px){.menu-overlay{gap:clamp(12px,2.2vh,20px)}.menu-overlay a{font-size:clamp(20px,5.7vw,25px)}}
+@media(max-height:590px){.menu-overlay{justify-content:flex-start;padding-top:90px;padding-bottom:25px;gap:12px}.menu-overlay a{font-size:20px}}
