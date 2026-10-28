@@ -28,7 +28,7 @@
 .brief-workspace .brief-result .actions{display:flex;align-items:center;flex-wrap:wrap;gap:13px}
 .brief-workspace .brief-result .actions .text-link{padding:12px 6px}
 .brief-workspace .brief-result textarea{min-height:170px}
-.seo-pathways .seo-cards>a:nth-child(3):last-child{grid-column:1/-1;min-height:145px}
+
 .seo-industry-link{max-width:1150px;margin:20px auto 40px;padding:24px 28px;border:1px solid #404040;border-radius:12px;line-height:1.65;font-size:14px;color:#bbb}
 .seo-industry-link a{text-decoration:underline;text-underline-offset:4px;color:inherit}
 .seo-case{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;border-top:1px solid #ccc;margin-top:70px;padding-top:60px}
@@ -37,7 +37,7 @@
 .seo-case p{font-size:14px;line-height:1.8;margin:16px 0}
 .seo-case-links{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:22px}
 @media(max-width:760px){.seo-case{grid-template-columns:1fr;gap:22px}.seo-industry-link{margin:20px 20px 30px}}
-@media(max-width:600px){.seo-pathways .seo-cards>a:nth-child(3):last-child{grid-column:auto}.brief-top{padding:16px 0}.brief-workspace .brief-actions{flex-wrap:wrap;gap:12px}.brief-workspace .brief-actions .button{width:100%}.brief-workspace .field-row{grid-template-columns:1fr}.brief-workspace .brief-result .button{width:100%}}
+@media(max-width:600px){.brief-top{padding:16px 0}.brief-workspace .brief-actions{flex-wrap:wrap;gap:12px}.brief-workspace .brief-actions .button{width:100%}.brief-workspace .field-row{grid-template-columns:1fr}.brief-workspace .brief-result .button{width:100%}}
 
 /* Conversion and trust refresh: less portfolio clutter, direct route to a brief. */
 .hero-proof{max-width:760px;color:#999;font:11px/1.7 var(--font-mono);letter-spacing:.02em;margin-top:24px;text-align:center}
@@ -128,3 +128,16 @@
 .audit-process-grid article span{font:12px var(--font-mono);color:#aaa}.audit-process-grid h3{font:700 22px var(--font-head);margin:17px 0}.audit-process-grid p{font-size:14px;line-height:1.8;color:#aaa}.audit-boundary{font-size:13px;color:#aaa;line-height:1.8;margin-top:23px;max-width:760px}
 @media(max-width:850px){.audit-grid,.audit-process-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:650px){.audit-home-banner{flex-direction:column;align-items:flex-start;margin-block:22px 45px;padding:23px}.audit-home-banner .button{white-space:normal}.audit-grid,.audit-process-grid{grid-template-columns:1fr}.audit-tool-header{align-items:flex-start;flex-direction:column}.audit-result-buttons>a.button,.audit-result-buttons>button.button{width:100%}.audit-question{padding:18px}}
+
+/* Homepage: three clear buyer decisions, no industry-specific card among generic offers. */
+.seo-pathways{padding-block:62px 50px}
+.seo-pathways .seo-pathways-intro{max-width:690px}
+.seo-pathways .seo-cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:32px}
+.seo-pathways .seo-cards>a{min-height:238px;padding:26px 24px;gap:12px}
+.seo-pathways .seo-cards .seo-card-index{font:600 11px/1.55 var(--font-mono);color:#929292;letter-spacing:.01em}
+.seo-pathways .seo-cards strong{font:650 clamp(19px,2.05vw,27px)/1.26 var(--font-head);letter-spacing:-.045em}
+.seo-pathways .seo-cards a>span:not(.seo-card-index){font-size:13px;line-height:1.72;color:#b5b5b5}
+.seo-pathways .seo-cards em{display:inline-flex;align-items:center;gap:7px;font-size:13px;text-decoration:none;border-bottom:1px solid #757575;padding-bottom:5px}
+.seo-pathways .seo-cards a:hover em,.seo-pathways .seo-cards a:focus-visible em{border-color:#fff}
+@media(max-width:960px){.seo-pathways .seo-cards{grid-template-columns:1fr}.seo-pathways .seo-cards>a{min-height:190px}}
+@media(max-width:600px){.seo-pathways{padding-block:46px 38px}.seo-pathways .seo-cards{gap:14px;margin-top:25px}.seo-pathways .seo-cards>a{min-height:178px;padding:22px}.seo-pathways .seo-cards strong{font-size:23px}.seo-pathways .seo-cards .seo-card-index{font-size:10px}}
