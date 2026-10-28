@@ -1,0 +1,32 @@
+name: Notify search engines after site publishing (IndexNow)
+on:
+  push:
+    branches:
+      - gh-pages
+    paths:
+      - 'index.html'
+      - '**/index.html'
+      - 'sitemap.xml'
+      - '.github/workflows/indexnow-on-publish.yml'
+permissions:
+  contents: read
+concurrency:
+  group: indexnow-publish
+  cancel-in-progress: true
+jobs:
+  notify-indexnow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout audit scripts from main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Allow live GitHub Pages sitemap to update
+        run: sleep 90
+      - name: Notify IndexNow of recently modified canonical pages
+        run: python scripts/indexnow_submit.py
