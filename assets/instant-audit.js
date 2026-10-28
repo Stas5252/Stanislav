@@ -33,62 +33,99 @@
   }
 
   function assess(extracted) {
-    const title = (extracted.match(/^Title:\s*(.+)$/mi) || [])[1]?.trim() || '';
-    const marker = extracted.indexOf('Markdown Content:');
-    const body = marker < 0 ? '' : extracted.slice(marker + 'Markdown Content:'.length).trim();
-    if (body.length < 110 ||
-      /^(access denied|forbidden|blocked|verify you are human|just a moment)/i.test(body.slice(0,100))) {
-      throw Error('Не получилось прочитать страницу. Возможно, сайт ограничивает автоматические проверки.');
+    if (!/<(?:html|head|body)(?:\s|>)/i.test(extracted)) {
+      throw Error('Не удалось получить структуру страницы. Попробуйте другую ссылку.');
     }
-    const headings = [...body.matchAll(/^#{1,3}\s+(.+)$/gm)].map(m => m[1].replace(/[*_~\[\]]/g,'').trim()).filter(Boolean);
-    const hasPrice = /(?:\d[\d\s\u00a0]{0,9}\s*(?:₽|руб(?:\.|лей)?|р\.)|стоимост|цен(?:а|ы|е|у)|прайс|тариф|расч[её]т|сколько стоит|pricing|price|plans|quote|estimate)/i.test(body);
-    const hasContact = /(?:mailto:|tel:|t\.me\/|wa\.me\/|контакт|связаться|напишите|позвон|телефон|обратн[а-я]+\s+связ|contact|call us|email us)/i.test(body);
-    const hasAction = /(?:заказать|оставить заявку|получить предложение|обсудить|записаться|купить|отправить заявку|оформить заказ|забронировать|запросить расч[её]т|book now|contact us|buy now|get started|request a quote)/i.test(body);
-    const hasProof = /(?:портфолио|отзыв|кейсы|кейс(?:ы|ов)?|наши работы|наши проекты|выполненн|клиент[ыа-я]{1,5}\s+(?:нам довер|компании)|сертификат|testimonial|portfolio|case stud|reviews|our work)/i.test(body);
-    const top = body.slice(0,1800);
-    const hasOffer = /(?:услуг|разработ|прода|производ|достав|заказ|консультац|запис|аренд|ремонт|обучени|магазин|магазин|клиник|фабрик|строител|студи|service|product|shop|store|consult|solutions|design|repair)/i.test(top);
+    // Inert document: inspect elements without inserting untrusted HTML into our page.
+    const doc = new DOMParser().parseFromString(extracted,'text/html');
+    const main = doc.querySelector('main') || doc.body;
+    if (!main || (main.textContent || '').length < 110) {
+      throw Error('На странице недостаточно доступного содержания для проверки.');
+    }
+    const visible = main.cloneNode(true);
+    visible.querySelectorAll('script,style,noscript,svg').forEach(el=>el.remove());
+    const text = (visible.textContent || '').replace(/\s+/g,' ').trim();
+    const title = (doc.querySelector('head title')?.textContent || '').trim();
+    const description = (doc.querySelector('head meta[name="description"]')?.getAttribute('content') || '').trim();
+    const h1 = [...doc.querySelectorAll('h1')].map(el=>el.textContent.trim()).filter(Boolean);
+    const robots = [...doc.querySelectorAll('meta[name="robots"],meta[name="googlebot"],meta[name="yandex"]')]
+      .map(x=>x.getAttribute('content')||'').join(' ').toLowerCase();
+    const links = [...doc.querySelectorAll('a[href]')];
+    const hasContact = links.some(el=>/^(?:tel:|mailto:|https?:\/\/(?:t\.me|telegram\.me|wa\.me|api\.whatsapp\.com|vk\.com)\/)/i.test(el.getAttribute('href')||''))
+      || /(?:телефон|почта|номер для связи|контакты|напишите нам|contact us)/i.test((doc.querySelector('footer')?.textContent || '').slice(0,2200));
+    const actions = [...main.querySelectorAll('a,button,input[type="submit"],input[type="button"]')]
+      .map(el=>((el.textContent || el.getAttribute('value') || '') + ' ' + (el.getAttribute('aria-label')||'')).replace(/\s+/g,' ').trim());
+    const hasAction = actions.some(t=>/(?:заказ|запис|обсуд|куп|отправ|оставить заявку|оформить|рассчит|брон|начать проект|contact us|book|request quote|buy now|order now|get started)/i.test(t));
+    const hasPrice = /(?:\d[\d\s\u00a0]{0,9}\s*(?:₽|руб(?:\.|лей)?|р\.)|стоимост|цены|цена|тариф|прайс|расч[её]т|сколько стоит|pricing|price|plans|quote)/i.test(text);
+    const hasProof = /(?:портфолио|отзыв|кейс|выполненн|наши работы|реальные проекты|сертификат|testimonial|portfolio|case stud|reviews|our work)/i.test(text)
+      || !!main.querySelector('[class*="project-card"],[class*="portfolio"],[id="work"]');
+    const hasMainHeading = h1.length > 0 && !/^(?:главная|добро пожаловать|home|welcome|привет)$/i.test(h1[0]);
+    const hasViewport = !!doc.querySelector('head meta[name="viewport"]');
+    const isIndexBlocked = /(?:^|[\s,])noindex(?:[\s,]|$)/i.test(robots);
+
     const checks = [
       {
+        ok: !isIndexBlocked,
+        problem: 'Страница закрыта от поисковиков',
+        reason: 'В коде найден запрет noindex — поисковикам предлагается не показывать эту страницу.',
+        advice: 'Если страницу должны находить в поиске, проверьте и уберите этот запрет.',
+        positive: 'Нет явного запрета noindex'
+      },
+      {
         ok: hasAction,
-        problem: 'Не нашёл понятного шага к заказу',
-        reason: 'В доступном тексте не увидел явного приглашения заказать, записаться или получить расчёт.',
-        advice: 'Добавьте заметную кнопку с конкретным действием и проверьте, что обращение действительно приходит.',
-        positive: 'Есть упоминание заказа или записи'
+        problem: 'Не нашёл заметного действия для клиента',
+        reason: 'Среди ссылок и кнопок не удалось обнаружить понятную запись, заказ или запрос расчёта.',
+        advice: 'Добавьте кнопку «Заказать», «Записаться» или «Узнать стоимость» в подходящем месте.',
+        positive: 'В коде есть кнопка или ссылка для обращения'
       },
       {
         ok: hasContact,
-        problem: 'Не нашёл способ быстро связаться',
-        reason: 'В тексте страницы не удалось обнаружить явный контакт.',
-        advice: 'Покажите телефон, мессенджер или почту там, где человек принимает решение.',
-        positive: 'В тексте упоминается связь с компанией'
+        problem: 'Не нашёл прямых контактов',
+        reason: 'В полученной странице нет ссылки на телефон, почту или привычный мессенджер.',
+        advice: 'Добавьте удобный способ связи, который работает и на телефоне.',
+        positive: 'Есть ссылка на телефон, почту или мессенджер'
+      },
+      {
+        ok: !!title,
+        problem: 'У страницы нет названия во вкладке',
+        reason: 'Не найден тег title — это название, которое видит браузер и может использовать поисковик.',
+        advice: 'Добавьте короткое название с услугой и названием компании.',
+        positive: 'У страницы есть название'
+      },
+      {
+        ok: !!description,
+        problem: 'Не заполнено описание для поиска',
+        reason: 'В коде нет meta description с кратким описанием страницы.',
+        advice: 'В двух предложениях опишите услугу и пользу для посетителя.',
+        positive: 'Есть описание страницы для поиска'
+      },
+      {
+        ok: hasMainHeading,
+        problem: 'Не нашёл понятного главного заголовка',
+        reason: 'Главный заголовок отсутствует или слишком общий.',
+        advice: 'Сразу объясните, чем занимается компания и что можно заказать.',
+        positive: 'Есть главный заголовок'
       },
       {
         ok: hasPrice,
-        problem: 'Не нашёл цены или способа её узнать',
-        reason: 'В извлечённом тексте нет заметного упоминания стоимости, тарифа или расчёта.',
-        advice: 'Покажите цену «от» или объясните, как посетитель получит смету.',
-        positive: 'Есть информация о ценах или расчёте'
+        problem: 'Не увидел информацию о стоимости',
+        reason: 'В тексте страницы не удалось найти цену, тариф или объяснение расчёта.',
+        advice: 'Укажите стартовую цену либо объясните, как получить смету.',
+        positive: 'В тексте есть цена или объяснение расчёта'
       },
       {
         ok: hasProof,
-        problem: 'Не нашёл подтверждений опыта',
-        reason: 'В доступном тексте нет явных упоминаний примеров работ, кейсов или отзывов.',
-        advice: 'Добавьте реальные проекты, фотографии работ или подтверждённые отзывы.',
-        positive: 'Упоминаются работы, кейсы или отзывы'
+        problem: 'Не увидел примеры работ или отзывы',
+        reason: 'В доступном содержании не нашёл очевидных подтверждений опыта.',
+        advice: 'Покажите настоящие работы, фотографии или отзывы с разрешения клиентов.',
+        positive: 'Есть раздел работ или упоминание отзывов'
       },
       {
-        ok: hasOffer,
-        problem: 'В начале текста не видно, что вы предлагаете',
-        reason: 'Не нашёл в начале доступного текста слов, которые объясняют услугу или продукт.',
-        advice: 'На первом экране напишите простыми словами, чем занимаетесь и кому помогаете.',
-        positive: 'В начале текста есть описание предложения'
-      },
-      {
-        ok: !!(title && title.length > 3 && title.length < 220 && headings.length),
-        problem: 'Не удалось увидеть понятную структуру страницы',
-        reason: 'Сервис не передал достаточно данных о заголовке и разделах.',
-        advice: 'Проверьте название вкладки и основной заголовок страницы: они должны отражать её содержание.',
-        positive: 'Получены название страницы и заголовки разделов'
+        ok: hasViewport,
+        problem: 'Не нашёл настройки для мобильных экранов',
+        reason: 'Не найден тег viewport. Из-за этого на телефонах страница может отображаться некорректно.',
+        advice: 'Проверьте мобильную адаптацию и viewport в коде.',
+        positive: 'Есть настройка отображения на телефонах'
       }
     ];
     return {title,checks};
@@ -118,8 +155,8 @@
 
     heading.textContent = 'Что проверить на ' + new URL(url).hostname;
     intro.textContent = missing.length
-      ? 'В тексте страницы не удалось подтвердить некоторые важные вещи. Вот с чего я бы начал:'
-      : 'В доступном тексте нашлись основные элементы. Это хороший знак, но удобство сайта и работу заявок всё ещё нужно проверить.';
+      ? 'В полученной странице есть моменты, которые стоит исправить или проверить:'
+      : 'По доступной структуре основные элементы на месте. Осталось проверить сайт на телефоне и убедиться, что заявки действительно приходят.';
     issues.replaceChildren();
     for (const check of missing) {
       issues.append(item('li',check.problem,check.advice + ' ' + check.reason));
@@ -137,11 +174,11 @@
     foundBox.hidden = positive.length === 0;
 
     const lines = missing.length ? missing : [{problem:'Проверить мобильную версию и получение заявок'}];
-    report = 'Предварительная проверка страницы\n' + url + '\n' +
+    report = 'Предварительная проверка структуры страницы\n' + url + '\n' +
       (title ? 'Название: ' + title.slice(0,130) + '\n' : '') +
       '\nЧто стоит проверить:\n' +
       lines.map((x,i)=>(i+1)+'. '+x.problem+(x.advice?'. '+x.advice:'')).join('\n') +
-      '\n\nВыводы сделаны только по доступному тексту. Нужна проверка человеком.';
+      '\n\nВыводы по доступному HTML, без проверки скорости и доставки заявок.';
     telegram.href = contactLink(url,missing);
     email.href = 'mailto:butov.stanislav.dev@gmail.com?subject='+
       encodeURIComponent('Разбор сайта: ' + new URL(url).hostname) +
@@ -150,7 +187,7 @@
     fallback.hidden = true;
     result.hidden = false;
     copyStatus.textContent = '';
-    status.textContent = 'Готово — проверен доступный текст одной страницы.';
+    status.textContent = 'Готово — проверены доступные элементы одной страницы.';
     result.scrollIntoView({behavior:'smooth',block:'start'});
   }
 
@@ -168,11 +205,11 @@
     inFlight = true;
     button.disabled = true;
     button.textContent = 'Проверяю сайт…';
-    status.textContent = 'Читаю открытую страницу и ищу, что можно улучшить.';
+    status.textContent = 'Проверяю открытые заголовки, кнопки, контакты и содержание.';
     const ctl = new AbortController();
     const timer = setTimeout(()=>ctl.abort(),26000);
     try {
-      const response = await fetch('https://r.jina.ai/'+url, {headers:{Accept:'text/plain'},signal:ctl.signal});
+      const response = await fetch('https://r.jina.ai/'+url, {headers:{Accept:'text/plain','X-Respond-With':'html'},signal:ctl.signal});
       if (response.status === 429) throw Error('Сервис проверки сейчас перегружен.');
       if (!response.ok) throw Error('Сайт не удалось прочитать автоматически.');
       show(url,(await response.text()).slice(0,240000));
