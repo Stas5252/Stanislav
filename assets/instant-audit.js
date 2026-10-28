@@ -151,7 +151,7 @@
   function show(url, extracted) {
     const {title,checks} = assess(extracted);
     const missing = checks.filter(x=>!x.ok).slice(0,4);
-    const positive = checks.filter(x=>x.ok).slice(0,4);
+    const positive = checks.filter(x=>x.ok && x.positive !== 'Нет явного запрета noindex').slice(0,4);
 
     heading.textContent = 'Что проверить на ' + new URL(url).hostname;
     intro.textContent = missing.length
