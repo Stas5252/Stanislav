@@ -203,3 +203,9 @@
   .service-summary{min-width:0;max-width:100%}
   .service-summary strong{white-space:normal;max-width:100%;min-width:0;overflow-wrap:break-word;font-size:clamp(16px,5.5vw,20px);line-height:1.4}
 }
+
+/* Full-site QA: Unbounded long guide headings caused horizontal scroll at 320px. */
+@media(max-width:360px){
+ .guide-hero .head{font-size:clamp(26px,8vw,32px);overflow-wrap:anywhere;hyphens:auto}
+ .guide-content .section-title{font-size:clamp(24px,7.6vw,30px);overflow-wrap:anywhere;hyphens:auto}
+}
