@@ -1,4 +1,4 @@
-name: Notify search engines after site publishing (IndexNow)
+name: Validate SEO and notify IndexNow after publishing
 on:
   push:
     branches:
@@ -16,7 +16,7 @@ concurrency:
 jobs:
   notify-indexnow:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 16
     steps:
       - name: Checkout audit scripts from main
         uses: actions/checkout@v4
@@ -28,5 +28,7 @@ jobs:
           python-version: '3.12'
       - name: Allow live GitHub Pages sitemap to update
         run: sleep 90
+      - name: Validate all published sitemap pages and SEO tags
+        run: python scripts/seo_audit.py
       - name: Notify IndexNow of recently modified canonical pages
         run: python scripts/indexnow_submit.py
