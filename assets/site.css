@@ -39,3 +39,13 @@ html{scroll-padding-top:84px}@media(max-width:600px){html{scroll-padding-top:76p
 .client-feedback{border-top:1px solid #393939;padding-top:22px;margin-top:30px}.client-feedback h3{font-size:17px;line-height:1.5;margin-bottom:12px}.client-feedback p{margin-bottom:12px}.client-feedback small{display:block;color:#aaa;font-size:12px;line-height:1.6}
 
 .concepts .real-project-cover{height:auto}
+
+/* Commercial clarity: concrete scope of each site format. */
+.site-purpose .delivery-index{display:block;font:600 10px/1.6 var(--font-mono);letter-spacing:.045em;color:#555;margin-bottom:14px}
+.pricing-card{background:#fff}
+.pricing-card>p{min-height:0;margin-bottom:18px}
+.pricing-includes{list-style:none;margin:0 0 26px;padding:17px 0 0;border-top:1px solid #ddd;display:grid;gap:10px}
+.pricing-includes li{position:relative;padding-left:17px;color:#333;font-size:12px;line-height:1.45}
+.pricing-includes li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;border-radius:50%;background:#383838}
+.price-val{margin-top:auto}
+@media(max-width:600px){.pricing-card>p{margin-bottom:16px}.pricing-includes{margin-bottom:24px}}
