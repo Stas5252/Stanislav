@@ -10,3 +10,5 @@
 - 2026-10-28 — Lighthouse CI run 40602786733 completed successfully for four mobile pages; genuine lab scores recorded and guide copy-button contrast / mobile font-size correction proposed in this release.
 
 - 2026-10-28 — second mobile Lighthouse run 40603393535 verified a11y fix on technical brief (100). Added row/rowheader/columnheader/cell roles to comparison table and mobile per-cell labels.
+
+- 2026-10-28 — commercial acquisition expansion: /website-audit/ self-check and contact flow, main page banner, sitemap, analytics allowlist, campaign attribution toolkit and 15-channel distribution plan. External posts and partnerships are drafts only.

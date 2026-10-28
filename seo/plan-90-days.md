@@ -29,3 +29,9 @@ The objective is qualified orders, not a guaranteed top ranking.
 - Live browser confirmed interactive format recommendation for multiple services.
 - Weekly technical check and IndexNow job already run successfully; mobile Lighthouse lab job launched on main (run 40602786733; inspect result before quoting metrics).
 - User's private Yandex Webmaster, verified leads and external client testimonials still not available. Owner access/permission required.
+
+## 2026-10-28 — acquisition expansion
+- Added /website-audit/: truthful 8-question self-assessment and manual hand-off to a human website review, no pretend automatic URL scanner.
+- Added home + redesign + pricing + business contextual links, canonical and sitemap entry.
+- Added content distribution and partnership outreach playbook with platform rules and UTM links (not posted externally).
+- Real external registrations require authenticated accounts; client links/reviews require client permission. No spam link-building.
