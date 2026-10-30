@@ -204,7 +204,7 @@
     lines.push('Бюджет: ' + (value('budget') || 'Пока не определился') + '.');
     lines.push('', 'Задача: ' + limitText(value('task'), 2000));
     // Telegram deep links prefill a draft; only the visitor can send it.
-    const target = 'https://t.me/' + username + '?text=' + encodeURIComponent(lines.join('\\n'));
+    const target = 'https://t.me/' + username + '?text=' + encodeURIComponent(lines.join('\n'));
     track('brief_prepare');
     if (status) status.textContent = 'Открываем Telegram. Нажмите «Отправить» в чате.';
     window.location.assign(target);
